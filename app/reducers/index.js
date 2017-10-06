@@ -3,12 +3,15 @@
  */
 import { combineReducers } from 'redux';
 import profileReducer, { profileActionCreators } from './profile';
+import notificationReducer, { notificationActionCreators } from './notifications';
 
 export {
-  profileActionCreators
+  profileActionCreators,
+  notificationActionCreators
 };
 
 export default combineReducers({
-  profileReducer
+  profileReducer,
+  notificationReducer
 });
 

@@ -3,10 +3,18 @@ import {
   View, Text, Button
 } from 'react-native';
 import Routes from './../config/Routes';
+import PushNotification from 'react-native-push-notification';
 
 export default class Profile extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    PushNotification.localNotificationSchedule({
+      message: "My Notification Message",
+      date: new Date(Date.now() + (3 * 1000)) // in 60 secs
+    });
   }
 
   render() {

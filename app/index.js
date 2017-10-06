@@ -3,11 +3,16 @@ import { Provider } from 'react-redux';
 import { Platform, View } from 'react-native';
 import { createStore } from 'redux';
 
+// screens
 import Profile from './screens/Profile';
 import Reward from './screens/Reward';
 import FlightInfo from './screens/FlightInfo';
 import FlightBooking from './screens/FlightBooking';
 
+// components
+import Notification from './components/Notification';
+
+import PushNotificationUtils from './utils/PushNotificationUtils';
 import reducers from './reducers';
 import { StackNavigator } from 'react-navigation';
 import Routes from './config/Routes';
@@ -35,11 +40,16 @@ class App extends Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    PushNotificationUtils.init(store);
+  }
+
   render() {
     return (
       <Provider store={store}>
         <View style={{ flex: 1,}}>
           <AppStackNavigator ref={navigator => this.navigator = navigator} />
+          <Notification />
         </View>
       </Provider>
     );
