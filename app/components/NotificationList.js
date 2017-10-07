@@ -41,21 +41,25 @@ const notificationData = [
   {
     title: 'Delay SIA from HCM to JKT',
     icon: Images.delay,
+    icon2x: Images.delay2x,
     description: 'SIA 298 Delay 30 mins VNA to JKT'
   },
   {
     title: '+5 Point SIA Happy birthday you',
     icon: Images.cake,
+    icon2x: Images.cake2x,
     description: 'Today is your birthday'
   },
   {
     title: '+10 Point from SIA Delay',
     icon: Images.coin,
+    icon2x: Images.coin2x,
     description: 'Sorry delaying ...'
   },
   {
     title: 'Spending on Sakura Changi',
     icon: Images.spending,
+    icon2x: Images.spending2x,
     description: 'Invoid number'
   }
 ];
@@ -64,6 +68,7 @@ const notificationDataWithDelay = [
   {
     title: '+100 Points Delay SIA from SIN to FCO',
     icon: Images.delay,
+    icon2x: Images.delay2x,
     description: 'SQ-366 Delay 90 mins SIN to FCO'
   },
   ...notificationData
