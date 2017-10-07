@@ -49,6 +49,22 @@ class HistoryList extends Component {
         {
           status: 'done',
           point: 50
+        },
+        {
+          status: 'done',
+          point: 10
+        },
+        {
+          status: 'pending',
+          point: 30
+        },
+        {
+          status: 'pending',
+          point: 10
+        },
+        {
+          status: 'done',
+          point: 50
         }
       ]),
     };
@@ -59,6 +75,9 @@ class HistoryList extends Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={(rowData) => <HistoryItem item={rowData}/>}
+        style={{
+          marginBottom: 30
+        }}
       />
     );
   }

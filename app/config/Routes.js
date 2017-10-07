@@ -4,5 +4,6 @@ export default Routes = {
   Reward: 'reward',
   FlightInfo: 'flight-info',
   FlightBooking: 'flight-booking',
-  HistoryPoint: 'history-point'
+  HistoryPoint: 'history-point',
+  NotificationPage: 'notification-page'
 };
