@@ -21,7 +21,7 @@ export default class Profile extends Component {
     super(props);
 
     this.state = {
-      name: '',
+      name: 'Sia APPCHALLENGE',
       originAirportCode: '',
       destAirportCode: '',
       seat: '',
@@ -121,29 +121,26 @@ export default class Profile extends Component {
     //   console.error("Failed!", error);
     // });
 
+    // const KFReq = {
+    //   request: {
+    //     krisflyerNumber: "8987011905"
+    //   },
+    //   clientUUID: "AnyUniqueStringToIdentifyTheRequest"
+    // };
 
 
+    // Networking.post('/krisflyer/getprofile', {}, KFReq)
+    // .then(function(response) {
+    //   const { accountSummary: {
+    //     kfMiles
+    //   }, loyaltyTierName } = response;
 
-    const KFReq = {
-      request: {
-        krisflyerNumber: "8987011905"
-      },
-      clientUUID: "AnyUniqueStringToIdentifyTheRequest"
-    };
-
-
-    Networking.post('/krisflyer/getprofile', {}, KFReq)
-    .then(function(response) {
-      const { accountSummary: {
-        kfMiles
-      }, loyaltyTierName } = response;
-
-      console.log("response: ", response);
-      console.log("kfMiles: ", kfMiles);
-      console.log("loyaltyTierName: ", loyaltyTierName);
-    }, function(error) {
-      console.error("Failed!", error);
-    });
+    //   console.log("response: ", response);
+    //   console.log("kfMiles: ", kfMiles);
+    //   console.log("loyaltyTierName: ", loyaltyTierName);
+    // }, function(error) {
+    //   console.error("Failed!", error);
+    // });
   }
 
   _renderModal = () => {
@@ -306,7 +303,7 @@ export default class Profile extends Component {
         flexDirection: 'row'
       }}
       onPress={() => {
-        this.props.navigation.navigate(Routes.FlightInfo);
+        this.props.navigation.navigate(Routes.FlightInfo, { state: this.state });
       }}
     >
       <Image
@@ -519,7 +516,7 @@ export default class Profile extends Component {
           }}
         />
 
-        {this.state.isDataFetched && this._renderName()}
+        {this._renderName()}
 
         <TouchableWithoutFeedback onPress={this._changeToDelay} >
           <View

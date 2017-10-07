@@ -9,7 +9,6 @@ import Images from '../assets/Images'
 const NotificationItem = (props) => {
   const notification = props.item;
 
-
   return (
     <View style={{flexDirection: 'row', borderBottomColor: '#eaeaea', borderBottomWidth: 1, padding: 15 , flex: 1}}>
       <View>

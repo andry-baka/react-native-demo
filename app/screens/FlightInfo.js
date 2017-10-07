@@ -12,6 +12,14 @@ export default class Profile extends Component {
   }
 
   render() {
+    const {
+      flightClass,
+      name,
+      originAirportCode,
+      destAirportCode,
+      flightNumber,
+      flightTime
+    } = this.props.navigation.state.params.state;
     return (
       <View
         style={{
@@ -78,7 +86,7 @@ export default class Profile extends Component {
                 fontWeight: '700'
               }}
             >
-              CGK
+             {originAirportCode}
             </Text>
             <Text
               style={{
@@ -87,7 +95,7 @@ export default class Profile extends Component {
                 fontWeight: '600'
               }}
             >
-              Jakarta
+             Singapore
             </Text>
           </View>
           <Image
@@ -109,7 +117,7 @@ export default class Profile extends Component {
                 fontWeight: '700'
               }}
             >
-              SIN
+             {destAirportCode}
             </Text>
             <Text
               style={{
@@ -118,7 +126,7 @@ export default class Profile extends Component {
                 fontWeight: '600'
               }}
             >
-              Singapore
+              Rome
             </Text>
           </View>
         </View>
@@ -307,7 +315,7 @@ export default class Profile extends Component {
                   fontWeight: '600'
                 }}
               >
-                GA-01
+                {flightNumber}
               </Text>
             </View>
             <View>
@@ -409,7 +417,7 @@ export default class Profile extends Component {
                   fontWeight: '500'
                 }}
               >
-                Andry Baka
+                APPCHALLENGE
               </Text>
               <Text
                 style={{
@@ -425,7 +433,7 @@ export default class Profile extends Component {
                   fontWeight: '500'
                 }}
               >
-                Business
+                {flightClass}
               </Text>
             </View>
             <Image
