@@ -31,6 +31,7 @@ export default class Profile extends Component {
       flightClass: '',
       flightNumber: '',
       flightStatus: 'On Schedule',
+      historyPoint: 212,
 
       visible: false,
       isModalVisible: false,
@@ -47,7 +48,10 @@ export default class Profile extends Component {
       message: `Dear ${this.state.name}, your flight will be delayed 90 minutes. Estimated departure time is ${moment(this.state.scheduledDepartureTime).add(90, 'minutes').format('HH:mm')}`,
       date: new Date(Date.now())
     });
-    this.setState({ flightStatus: 'Delay' });
+    this.setState({
+      flightStatus: 'Delay',
+      historyPoint: 312,
+    });
   }
 
   _getData = () => {
@@ -481,7 +485,7 @@ export default class Profile extends Component {
         >
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate(Routes.HistoryPoint)
+              this.props.navigation.navigate(Routes.HistoryPoint, { historyPoint: this.state.historyPoint })
             }}
           >
             <Image

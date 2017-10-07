@@ -111,11 +111,11 @@ class HistoryPoint extends Component {
           <Text style={{
             color: '#fff',
             fontWeight: '900'
-            }}>212
+            }}>{this.props.navigation.state.params.historyPoint}
           </Text>
           <Text style={{
             color: '#fff'
-            }}>Pts
+            }}> Pts
           </Text>
         </View>
 
