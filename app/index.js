@@ -21,9 +21,9 @@ import Routes from './config/Routes';
 const store = createStore(reducers);
 
 const MainStackNavigator = StackNavigator({
+  [Routes.Profile]: { screen: Profile },
   [Routes.NotificationPage]: {screen: NotificationPage},
   [Routes.HistoryPoint]: { screen: HistoryPoint },
-  [Routes.Profile]: { screen: Profile },
   [Routes.Reward]: { screen: Reward },
   [Routes.FlightInfo]: { screen: FlightInfo },
   [Routes.FlightBooking]: { screen: FlightBooking }
