@@ -12,5 +12,8 @@ export default {
   planeDown: require('./images/plane_down.png'),
   goIn: require('./images/go_in.png'),
   qrCode: require('./images/qr.png'),
-  ticketBG: require('./images/ticket_bg.png')
+  ticketBG: require('./images/ticket_bg.png'),
+  planeSelectSeat: require('./images/plane_select_seat.png'),
+  check: require('./images/check.png'),
+  luggage: require('./images/luggage.png'),
 }

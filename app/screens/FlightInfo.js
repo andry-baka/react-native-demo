@@ -256,6 +256,9 @@ export default class Profile extends Component {
                   justifyContent: 'center',
                   marginTop: 12
                 }}
+                onPress={() => {
+                  this.props.navigation.navigate(Routes.FlightBooking);
+                }}
               >
                 <Image
                   source={Images.goIn}

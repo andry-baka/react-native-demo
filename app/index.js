@@ -8,6 +8,7 @@ import Profile from './screens/Profile';
 import Reward from './screens/Reward';
 import FlightInfo from './screens/FlightInfo';
 import FlightBooking from './screens/FlightBooking';
+import Payment from './screens/Payment';
 
 // components
 import Notification from './components/Notification';
@@ -23,9 +24,11 @@ const MainStackNavigator = StackNavigator({
   [Routes.Reward]: { screen: Reward },
   [Routes.FlightInfo]: { screen: FlightInfo },
   [Routes.FlightBooking]: { screen: FlightBooking },
+  [Routes.Payment]: { screen: Payment },
 }, {
   headerMode: 'none',
   cardStyle: { backgroundColor: 'white' },
+  initialRouteName: Routes.Profile
 });
 
 export const AppStackNavigator = StackNavigator({

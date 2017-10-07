@@ -3,5 +3,6 @@ export default Routes = {
   Profile: 'profile',
   Reward: 'reward',
   FlightInfo: 'flight-info',
-  FlightBooking: 'flight-booking'
+  FlightBooking: 'flight-booking',
+  Payment: 'payment'
 };
