@@ -134,6 +134,39 @@ export default class Profile extends Component {
     });
   }
 
+  _renderModal = () => {
+    return (
+      <Modal
+        backdropColor={'black'}
+        backdropOpacity={0.5}
+        animationIn={'zoomInDown'}
+        animationOut={'zoomOutUp'}
+        animationInTiming={1000}
+        animationOutTiming={1000}
+        backdropTransitionInTiming={1000}
+        backdropTransitionOutTiming={1000}
+        isVisible={this.state.isModalVisible}
+        onBackdropPress={() => this.setState({ visibleModal: null })}
+      >
+        <View style={{
+          backgroundColor: 'white',
+          height: 150,
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: 4,
+          borderColor: 'rgba(0, 0, 0, 0.1)'
+          }}
+        >
+          <View style={{ flex: 1 }}>
+            <TouchableOpacity onPress={() => {this._getData(); this._hideModal();}}>
+              <Text>Get SIA Data!</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    )
+  }
+
   _renderName = () => {
     return(
       <View>
@@ -425,34 +458,7 @@ export default class Profile extends Component {
           <Text style={{ marginLeft: 8, color: '#fff', fontWeight: '600' }}>Add New Flight</Text>
         </TouchableOpacity>
 
-        <Modal
-            backdropColor={'black'}
-            backdropOpacity={0.5}
-            animationIn={'zoomInDown'}
-            animationOut={'zoomOutUp'}
-            animationInTiming={1000}
-            animationOutTiming={1000}
-            backdropTransitionInTiming={1000}
-            backdropTransitionOutTiming={1000}
-            isVisible={this.state.isModalVisible}
-            onBackdropPress={() => this.setState({ visibleModal: null })}
-          >
-          <View style={{
-            backgroundColor: 'white',
-            height: 150,
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 4,
-            borderColor: 'rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            <View style={{ flex: 1 }}>
-              <TouchableOpacity onPress={() => {this._getData(); this._hideModal();}}>
-                <Text>Get SIA Data!</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Modal>
+        {this._renderModal()}
 
         {this.state.isDataFetched && this._renderStat()}
       </View>
