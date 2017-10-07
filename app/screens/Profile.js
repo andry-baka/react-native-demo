@@ -485,7 +485,10 @@ export default class Profile extends Component {
         >
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate(Routes.HistoryPoint, { historyPoint: this.state.historyPoint })
+              this.props.navigation.navigate(Routes.HistoryPoint, {
+                historyPoint: this.state.historyPoint,
+                flightStatus: this.state.flightStatus
+              })
             }}
           >
             <Image

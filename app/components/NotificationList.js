@@ -63,7 +63,7 @@ const notificationData = [
     title: 'Spending on Sakura Changi',
     icon: Images.spending,
     icon2x: Images.spending2x,
-    description: 'Invoid number'
+    description: 'Invoice number'
   }
 ];
 

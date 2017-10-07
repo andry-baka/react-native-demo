@@ -6,7 +6,15 @@ import Routes from './../config/Routes';
 
 
 const HistoryItem = (props) => {
-  const icon  = props.item.status === 'done' ? require(`../assets/icons/coin-icon.png`) : require(`../assets/icons/spend-icon.png`)
+  let icon = '';
+  if (props.item.type === 'coin') {
+    icon = require(`../assets/icons/coin-icon.png`);
+  } else if (props.item.type === 'spend') {
+    icon = require(`../assets/icons/spend-icon.png`);
+  } else if (props.item.type === 'delay') {
+    icon = require(`../assets/icons/megaphone-icon.png`);
+  };
+
   return (
     <View style={{flexDirection: 'row', borderBottomColor: '#878787', borderBottomWidth: 1, padding: 20, justifyContent: 'space-between'}}>
       <Image 
@@ -18,8 +26,8 @@ const HistoryItem = (props) => {
         }}
       />
       <View style={{paddingLeft: 10}}>
-        <Text style={{fontWeight: 'bold', color: '#231f20', fontStyle: 'italic'}}>Spending on Sakura Restaurant</Text>
-        <Text style={{fontSize: 12}}>07 Oct . Invoice number 09283</Text>
+        <Text style={{fontWeight: 'bold', color: '#231f20', fontStyle: 'italic'}}>{props.item.title}</Text>
+        <Text style={{fontSize: 12}}>{props.item.description}</Text>
       </View>
       <Text style={ props.item.status === 'done' ? styles.pointStatusDone : styles.pointStatus}>
         {props.item.status !== 'done' ? props.item.point : `+ ${props.item.point} `}
@@ -28,45 +36,84 @@ const HistoryItem = (props) => {
   )
 }
 
+const historyData = [
+  {
+    status: 'done',
+    type: 'coin',
+    point: 10,
+    title: 'Flying with Singapore Airlines   ',
+    description: '01 July: SQ-122 CGK to SIN'
+  },
+  {
+    status: 'pending',
+    type: 'spend',
+    point: 30,
+    title: 'Spending on Sakura Restaurant',
+    description: '08 Oct: Invoice number 09283'
+  },
+  {
+    status: 'pending',
+    type: 'spend',
+    point: 10,
+    title: 'Spending on Sakura Restaurant',
+    description: '08 Oct: Invoice number 09283'
+  },
+  {
+    status: 'done',
+    type: 'coin',
+    point: 50,
+    title: 'Flying with Singapore Airlines   ',
+    description: '21 Jun: SQ-35 CGK to SIN'
+  },
+  {
+    status: 'done',
+    type: 'coin',
+    point: 10,
+    title: 'Flying with Singapore Airlines   ',
+    description: '4 Mar: SQ-35 CGK to SF'
+  },
+  {
+    status: 'pending',
+    type: 'spend',
+    point: 30,
+    title: 'Spending on Sakura Restaurant',
+    description: '08 Oct: Invoice number 09283'
+  },
+  {
+    status: 'pending',
+    type: 'spend',
+    point: 10,
+    title: 'Spending on Sakura Restaurant',
+    description: '08 Oct: Invoice number 09283'
+  },
+  {
+    status: 'done',
+    type: 'coin',
+    point: 50,
+    title: 'Flying with Singapore Airlines   ',
+    description: '3 Feb: SQ-544 SIN to CGK'
+  }
+];
+
+const historyDataWithDelay = [
+  {
+    status: 'done',
+    type: 'delay',
+    point: 100,
+    title: 'Delay SIA from SIN to FCO',
+    description: '08 Oct: SQ-366 Delay 90 mins SIN to FCO'
+  },
+  ...historyData
+];
+
 class HistoryList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    console.log('this.props: ', this.props);
+    const data = this.props.type === 'Delay' ? historyDataWithDelay : historyData;
     this.state = {
-      dataSource: ds.cloneWithRows([
-        {
-          status: 'done',
-          point: 10
-        },
-        {
-          status: 'pending',
-          point: 30
-        },
-        {
-          status: 'pending',
-          point: 10
-        },
-        {
-          status: 'done',
-          point: 50
-        },
-        {
-          status: 'done',
-          point: 10
-        },
-        {
-          status: 'pending',
-          point: 30
-        },
-        {
-          status: 'pending',
-          point: 10
-        },
-        {
-          status: 'done',
-          point: 50
-        }
-      ]),
+      dataSource: ds.cloneWithRows(data),
     };
   }
 

@@ -11,11 +11,12 @@ import Routes from './../config/Routes';
 import HistoryPointListComponent from '../components/HistoryPointList';
 import PartnerList from '../components/PartnerList';
 
-const FirstRoute = () => (
+const FirstRoute = (props) => (
   <View style={[ styles.container, { backgroundColor: '#fff' } ]}>
-    <HistoryPointListComponent/>
+    <HistoryPointListComponent type={props.route.flightStatus}/>
   </View>
-)
+);
+
 const SecondRoute = () => (
   <View style={[ styles.container, { backgroundColor: '#fff' } ]}>
     <PartnerList/>
@@ -30,7 +31,7 @@ class HistoryPoint extends Component {
   state = {
     index: 0,
     routes: [
-      { key: '1', title: 'Point History' },
+      { key: '1', title: 'Point History', flightStatus: this.props.navigation.state.params.flightStatus },
       { key: '2', title: 'Partnership' },
     ],
   };
@@ -48,7 +49,6 @@ class HistoryPoint extends Component {
     '1': FirstRoute,
     '2': SecondRoute,
   });
-
 
   _renderHeaderHistory = () => {
   return (
@@ -91,6 +91,7 @@ class HistoryPoint extends Component {
   } 
 
   render() {
+    const { historyPoint , flightStatus } = this.props.navigation.state.params;
     return (
       <View style={{
         flex: 1,
@@ -111,7 +112,7 @@ class HistoryPoint extends Component {
           <Text style={{
             color: '#fff',
             fontWeight: '900'
-            }}>{this.props.navigation.state.params.historyPoint}
+            }}>{historyPoint}
           </Text>
           <Text style={{
             color: '#fff'
