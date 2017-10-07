@@ -18,7 +18,7 @@ class Notification extends Component {
   componentWillReceiveProps(newProps) {
     const { notificationObject } = newProps;
     this._show(notificationObject);
-    this.timeOutId = setTimeout(this._hide, 4500);
+    this.timeOutId = setTimeout(this._hide, 10000);
   }
 
   _show = (notificationObject) => {

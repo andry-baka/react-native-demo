@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import {
   View, Text, Button, Image, StatusBar, Dimensions,
+  TextInput,
   TouchableOpacity, TouchableWithoutFeedback
 } from 'react-native';
 import Modal from 'react-native-modal';
@@ -160,17 +161,103 @@ export default class Profile extends Component {
         onBackdropPress={() => this.setState({ visibleModal: null })}
       >
         <View style={{
+          marginTop: 20,
           backgroundColor: 'white',
-          height: 150,
+          height: 350,
           justifyContent: 'center',
           alignItems: 'center',
           borderRadius: 4,
           borderColor: 'rgba(0, 0, 0, 0.1)'
           }}
         >
-          <View style={{ flex: 1 }}>
-            <TouchableOpacity onPress={() => {this._getData(); this._hideModal();}}>
-              <Text>Get SIA Data!</Text>
+          <Text
+            style={{
+              color: 'black',
+              textAlign: 'center',
+              fontSize: 25,
+              fontWeight: '700'
+            }}
+          >
+            Have a new flight?
+          </Text>
+
+          <View style={{
+              marginTop: 20,
+              margin: -20
+            }}
+          >
+            <View style={{
+                marginTop: 20,
+                width: 250,
+                height: 60,
+                backgroundColor: '#fff',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                flexDirection: 'row'
+              }}
+            >
+              <Text
+                style={{
+                  color: 'black',
+                  fontSize: 15
+                }}
+              >
+                Last Name
+              </Text>
+              <TextInput
+                style={{
+                  height: 40,
+                  width: 150,
+                  alignItems: 'flex-end',
+                  justifyContent: 'flex-end',
+                  borderColor: 'gray',
+                  borderWidth: 1,
+                  borderRadius: 8
+                }}
+                value="APPCHALLENGE"
+                placeholder="APPCHALLENGE"
+                onChangeText={(text) => this.setState({text})}
+              />
+            </View>
+
+            <Text
+              style={{
+                color: 'black',
+                fontSize: 15
+              }}
+            >
+              Booking ref
+            </Text>
+
+            <TextInput
+              style={{
+                height: 80,
+                marginTop: 10,
+                borderColor: 'gray',
+                borderWidth: 1,
+                borderRadius: 8
+              }}
+              placeholder="Enter booking ref number"
+              multiline = {true}
+              numberOfLines = {3}
+              editable = {true}
+              maxLength = {40}
+            />
+
+            <TouchableOpacity
+              onPress={() => {this._getData(); this._hideModal();}}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 16,
+                borderRadius: 8,
+                backgroundColor: '#80ae54',
+                paddingHorizontal: 34,
+                paddingVertical: 12
+              }}
+            >
+              <Image source={Images.add} style={{width: 25, height: 25}} />
+              <Text style={{ marginLeft: 20, color: '#fff', fontWeight: '600' }}>Add New Flight</Text>
             </TouchableOpacity>
           </View>
         </View>
