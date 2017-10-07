@@ -18,7 +18,10 @@ export default {
   delay: require('./icons/megaphone-icon.png'),
   cake: require('./icons/cake-icon.png'),
   coin: require('./icons/coin-icon.png'),
-  spending: require('./icons/spend-icon.png'),
+  cake2x: require('./icons/cake-icon-2x.jpg'),
+  coin2x: require('./icons/coin-icon2x.jpg'),
+  spending2x: require('./icons/spend-icon2x.jpg'),
+  delay2x: require('./icons/alert-icon2x.jpg'),
   partner: [
     {
       img: require('./partners/1.jpg')

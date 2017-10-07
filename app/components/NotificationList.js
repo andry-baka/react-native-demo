@@ -47,21 +47,25 @@ class NotificationList extends Component {
         {
           title: 'Delay SIA from HCM to JKT',
           icon: Images.delay,
+          icon2x: Images.delay2x,
           description: 'SIA 298 Deplay 30 mins VNA to JKT'
         },
         {
           title: '+5 Point SIA Happy birthday you',
           icon: Images.cake,
+          icon2x: Images.cake2x,
           description: 'Today is your birthday'
         },
         {
           title: '+10 Point from SIA Delaying',
           icon: Images.coin,
+          icon2x: Images.coin2x,
           description: 'Sorry delaying ...'
         },
         {
           title: 'Spending on Sakura Changi',
           icon: Images.spending,
+          icon2x: Images.spending2x,
           description: 'Invoid number'
         }
       ]),

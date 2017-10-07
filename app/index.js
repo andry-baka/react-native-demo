@@ -11,6 +11,7 @@ import FlightBooking from './screens/FlightBooking';
 import HistoryPoint from './screens/HistoryPoint';
 import NotificationPage from './screens/NotificationPage';
 import Payment from './screens/Payment';
+import NotificationDetailPage from './screens/NotificationDetailPage'
 
 // components
 import Notification from './components/Notification';
@@ -22,6 +23,7 @@ import Routes from './config/Routes';
 const store = createStore(reducers);
 
 const MainStackNavigator = StackNavigator({
+  [Routes.NotificationDetailPage]: { screen: NotificationDetailPage },
   [Routes.Profile]: { screen: Profile },
   [Routes.NotificationPage]: {screen: NotificationPage},
   [Routes.HistoryPoint]: { screen: HistoryPoint },
@@ -32,7 +34,7 @@ const MainStackNavigator = StackNavigator({
 }, {
   headerMode: 'none',
   cardStyle: { backgroundColor: 'white' },
-  initialRouteName: Routes.Profile
+  initialRouteName: Routes.NotificationDetailPage
 });
 
 export const AppStackNavigator = StackNavigator({
