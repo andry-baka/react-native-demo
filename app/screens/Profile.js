@@ -497,7 +497,7 @@ export default class Profile extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate(Routes.NotificationPage)
+              this.props.navigation.navigate(Routes.NotificationPage, { flightStatus: this.state.flightStatus })
             }}
           >
             <Image

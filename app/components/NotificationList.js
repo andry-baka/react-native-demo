@@ -31,40 +31,52 @@ const NotificationItem = (props) => {
             minWidth: 60,
             color: '#878787',
             fontWeight: 'bold',
-            textAlign: 'right'}}>7 Oct 2017</Text>
+            textAlign: 'right'}}>8 Oct 2017</Text>
         </View>
       </View>
     </View>
   )
 }
 
+const notificationData = [
+  {
+    title: 'Delay SIA from HCM to JKT',
+    icon: Images.delay,
+    description: 'SIA 298 Delay 30 mins VNA to JKT'
+  },
+  {
+    title: '+5 Point SIA Happy birthday you',
+    icon: Images.cake,
+    description: 'Today is your birthday'
+  },
+  {
+    title: '+10 Point from SIA Delay',
+    icon: Images.coin,
+    description: 'Sorry delaying ...'
+  },
+  {
+    title: 'Spending on Sakura Changi',
+    icon: Images.spending,
+    description: 'Invoid number'
+  }
+];
+
+const notificationDataWithDelay = [
+  {
+    title: '+100 Points Delay SIA from SIN to FCO',
+    icon: Images.delay,
+    description: 'SQ-366 Delay 90 mins SIN to FCO'
+  },
+  ...notificationData
+];
+
 class NotificationList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    const data = this.props.type === 'Delay' ? notificationDataWithDelay : notificationData;
     this.state = {
-      dataSource: ds.cloneWithRows([
-        {
-          title: 'Delay SIA from HCM to JKT',
-          icon: Images.delay,
-          description: 'SIA 298 Deplay 30 mins VNA to JKT'
-        },
-        {
-          title: '+5 Point SIA Happy birthday you',
-          icon: Images.cake,
-          description: 'Today is your birthday'
-        },
-        {
-          title: '+10 Point from SIA Delaying',
-          icon: Images.coin,
-          description: 'Sorry delaying ...'
-        },
-        {
-          title: 'Spending on Sakura Changi',
-          icon: Images.spending,
-          description: 'Invoid number'
-        }
-      ]),
+      dataSource: ds.cloneWithRows(data),
     };
   }
 
