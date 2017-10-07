@@ -35,5 +35,8 @@ export default {
     {
       img: require('./partners/5.jpg')
     }
-  ]
+  ],
+  planeSelectSeat: require('./images/plane_select_seat.png'),
+  check: require('./images/check.png'),
+  luggage: require('./images/luggage.png'),
 }

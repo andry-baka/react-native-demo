@@ -10,6 +10,7 @@ import FlightInfo from './screens/FlightInfo';
 import FlightBooking from './screens/FlightBooking';
 import HistoryPoint from './screens/HistoryPoint';
 import NotificationPage from './screens/NotificationPage';
+import Payment from './screens/Payment';
 
 // components
 import Notification from './components/Notification';
@@ -26,10 +27,12 @@ const MainStackNavigator = StackNavigator({
   [Routes.HistoryPoint]: { screen: HistoryPoint },
   [Routes.Reward]: { screen: Reward },
   [Routes.FlightInfo]: { screen: FlightInfo },
-  [Routes.FlightBooking]: { screen: FlightBooking }
+  [Routes.FlightBooking]: { screen: FlightBooking },
+  [Routes.Payment]: { screen: Payment }
 }, {
   headerMode: 'none',
   cardStyle: { backgroundColor: 'white' },
+  initialRouteName: Routes.Profile
 });
 
 export const AppStackNavigator = StackNavigator({
