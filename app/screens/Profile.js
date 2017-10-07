@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import {
   View, Text, Button, Image, StatusBar, Dimensions,
-  TouchableOpacity
+  TouchableOpacity, TouchableWithoutFeedback
 } from 'react-native';
 import Modal from 'react-native-modal';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -24,10 +24,12 @@ export default class Profile extends Component {
       originAirportCode: '',
       destAirportCode: '',
       seat: '',
-      date: '',
-      time: '',
+      flightDate: '',
+      flightTime: '',
+      scheduledDepartureTime: '',
       flightClass: '',
       flightNumber: '',
+      flightStatus: 'On Schedule',
 
       visible: false,
       isModalVisible: false,
@@ -38,6 +40,14 @@ export default class Profile extends Component {
   _showModal = () => this.setState({ isModalVisible: true })
   
   _hideModal = () => this.setState({ isModalVisible: false })
+
+  _changeToDelay = () => {
+    PushNotification.localNotificationSchedule({
+      message: `Dear ${this.state.name}, your flight will be delayed 90 minutes. Estimated departure time is ${moment(this.state.scheduledDepartureTime).add(90, 'minutes').format('HH:mm')}`,
+      date: new Date(Date.now())
+    });
+    this.setState({ flightStatus: 'Delay' });
+  }
 
   _getData = () => {
     const PNRReq = {
@@ -63,8 +73,9 @@ export default class Profile extends Component {
         originAirportCode: origin.airportCode,
         destAirportCode: destination.airportCode,
         seat: seatNumber,
-        date: moment(scheduledDepartureTime).format('DD MMM'),
-        time: moment(scheduledDepartureTime).format('LT'),
+        flightDate: moment(scheduledDepartureTime).format('DD MMM'),
+        flightTime: moment(scheduledDepartureTime).format('HH:mm'),
+        scheduledDepartureTime: scheduledDepartureTime,
         flightClass: cabinClass,
         flightNumber: marketingAirlineCode + '-' + flightNumber
       });
@@ -337,7 +348,7 @@ export default class Profile extends Component {
             color: '#616161'
           }}
         >
-        {this.state.date}
+        {this.state.flightDate}
         </Text>
         <Text
           style={{
@@ -345,15 +356,15 @@ export default class Profile extends Component {
             fontWeight: '600'
           }}
         >
-        {this.state.time}
+        {this.state.flightTime}
         </Text>
         <Text
           style={{
-            color: '#80ae54',
+            color: this.state.flightStatus === 'Delay' ? 'red' : '#80ae54',
             fontSize: 10
           }}
         >
-          On Schedule
+          {this.state.flightStatus}
         </Text>
       </View>
     </TouchableOpacity>
@@ -420,27 +431,29 @@ export default class Profile extends Component {
 
         {this.state.isDataFetched && this._renderName()}
 
-        <View
-          style={{
-            marginTop: 10,
-            backgroundColor: '#000',
-            width,
-            height: 60,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Text
+        <TouchableWithoutFeedback onPress={this._changeToDelay} >
+          <View
             style={{
-              color: '#fff',
-              textAlign: 'center',
-              backgroundColor: 'transparent'
+              marginTop: 10,
+              backgroundColor: '#000',
+              width,
+              height: 60,
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            Don’t forget you will have flight{'\n'}
-            tomorrow evening
-          </Text>
-        </View>
+            <Text
+              style={{
+                color: '#fff',
+                textAlign: 'center',
+                backgroundColor: 'transparent'
+              }}
+            >
+              Don’t forget you will have flight{'\n'}
+              tomorrow evening
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
 
         <TouchableOpacity
           onPress={this._showModal}
