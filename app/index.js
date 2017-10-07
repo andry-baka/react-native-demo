@@ -32,7 +32,7 @@ const MainStackNavigator = StackNavigator({
 }, {
   headerMode: 'none',
   cardStyle: { backgroundColor: 'white' },
-  initialRouteName: Routes.Profile
+  initialRouteName: Routes.Payment
 });
 
 export const AppStackNavigator = StackNavigator({

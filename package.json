@@ -17,9 +17,11 @@
 		"react-native-modal": "^4.0.0",
 		"react-native-push-notification": "^3.0.1",
 		"react-native-tab-view": "^0.0.69",
+		"react-native-svg": "^6.0.0-rc1",
 		"react-navigation": "1.0.0-beta.13",
 		"react-redux": "5.0.6",
-		"redux": "3.7.2"
+		"redux": "3.7.2",
+		"svgs": "^3.1.0"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",
