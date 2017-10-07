@@ -210,7 +210,7 @@ export default class Profile extends Component {
                   width: 150,
                   alignItems: 'flex-end',
                   justifyContent: 'flex-end',
-                  borderColor: 'gray',
+                  borderColor: '#eaeaea',
                   borderWidth: 1,
                   borderRadius: 8
                 }}
@@ -233,7 +233,7 @@ export default class Profile extends Component {
               style={{
                 height: 80,
                 marginTop: 10,
-                borderColor: 'gray',
+                borderColor: '#eaeaea',
                 borderWidth: 1,
                 borderRadius: 8
               }}
@@ -297,7 +297,10 @@ export default class Profile extends Component {
         height: 60,
         backgroundColor: '#fff',
         borderRadius: 12,
-        shadowColor: '#000', shadowOffset: {width: 0, height: 1}, shadowOpacity: 0.4, shadowRadius:1.5,
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.4,
+        shadowRadius:1.5,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row'
