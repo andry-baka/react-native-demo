@@ -42,12 +42,6 @@ const NotificationItem = (props) => {
 
 const notificationData = [
   {
-    title: 'Delay SIA from HCM to JKT',
-    icon: Images.delay,
-    icon2x: Images.delay2x,
-    description: 'SIA 298 Delay 30 mins VNA to JKT'
-  },
-  {
     title: '+5 Point SIA Happy birthday you',
     icon: Images.cake,
     icon2x: Images.cake2x,
