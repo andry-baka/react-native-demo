@@ -55,6 +55,7 @@ class Notification extends Component {
         style={[
           StyleSheet.absoluteFillObject
         ]}
+        pointerEvents={'box-none'}
       >
         <AnimatedTouchableOpacity
           activeOpacity={0.6}
