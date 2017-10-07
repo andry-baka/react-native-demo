@@ -5,5 +5,6 @@ export default Routes = {
   FlightInfo: 'flight-info',
   FlightBooking: 'flight-booking',
   HistoryPoint: 'history-point',
-  NotificationPage: 'notification-page'
+  NotificationPage: 'notification-page',
+  Payment: 'payment'
 };

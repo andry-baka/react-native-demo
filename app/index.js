@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import { createStore } from 'redux';
 
 // screens
@@ -32,7 +32,7 @@ const MainStackNavigator = StackNavigator({
 }, {
   headerMode: 'none',
   cardStyle: { backgroundColor: 'white' },
-  initialRouteName: Routes.Payment
+  initialRouteName: Routes.Profile
 });
 
 export const AppStackNavigator = StackNavigator({
