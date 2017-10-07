@@ -62,7 +62,10 @@ class NotificationPage extends Component {
         backgroundColor: '#8e816c'
       }}>
         {this._renderHeaderHeader()}
-        <NotificationList type={this.props.navigation.state.params.flightStatus}/>
+        <NotificationList
+          type={this.props.navigation.state.params.flightStatus}
+          navigation={this.props.navigation}
+        />
       </View>
     );
   }

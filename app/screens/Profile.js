@@ -481,7 +481,7 @@ export default class Profile extends Component {
         >
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate(Routes.Reward)
+              this.props.navigation.navigate(Routes.HistoryPoint)
             }}
           >
             <Image

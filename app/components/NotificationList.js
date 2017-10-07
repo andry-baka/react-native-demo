@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, Text, ListView, Image, StyleSheet
+  View, Text, ListView, Image, StyleSheet, TouchableOpacity
 } from 'react-native';
 import Routes from './../config/Routes';
 import Images from '../assets/Images'
@@ -8,32 +8,35 @@ import Images from '../assets/Images'
 
 const NotificationItem = (props) => {
   const notification = props.item;
+  const { navigate } = props.navigation;
 
   return (
-    <View style={{flexDirection: 'row', borderBottomColor: '#eaeaea', borderBottomWidth: 1, padding: 15 , flex: 1}}>
-      <View>
-        <Image 
-          source={notification.icon}
-          style= {{
-            width: 61 * 0.8,
-            height: 61 * 0.8,
-            resizeMode: 'contain'
-          }}
-        />
-      </View>
-      <View style={{paddingLeft: 10, flex: 1}}>
-        <Text style={{fontWeight: 'bold', color: '#231f20', fontStyle: 'italic'}}>{notification.title}</Text>
-        <View style={{flexDirection: 'row', flex: 1, paddingTop: 5}}>
-          <Text style={{fontSize: 13, flex: 1, color: '#878787', fontWeight: 'bold'}}>{notification.description}</Text>
-          <Text style={{
-            fontSize: 12,
-            minWidth: 60,
-            color: '#878787',
-            fontWeight: 'bold',
-            textAlign: 'right'}}>8 Oct 2017</Text>
+    <TouchableOpacity onPress={() => { navigate(Routes.NotificationDetailPage) }} >
+      <View style={{flexDirection: 'row', borderBottomColor: '#eaeaea', borderBottomWidth: 1, padding: 15 , flex: 1}}>
+        <View>
+          <Image 
+            source={notification.icon}
+            style= {{
+              width: 61 * 0.8,
+              height: 61 * 0.8,
+              resizeMode: 'contain'
+            }}
+          />
+        </View>
+        <View style={{paddingLeft: 10, flex: 1}}>
+          <Text style={{fontWeight: 'bold', color: '#231f20', fontStyle: 'italic'}}>{notification.title}</Text>
+          <View style={{flexDirection: 'row', flex: 1, paddingTop: 5}}>
+            <Text style={{fontSize: 13, flex: 1, color: '#878787', fontWeight: 'bold'}}>{notification.description}</Text>
+            <Text style={{
+              fontSize: 12,
+              minWidth: 60,
+              color: '#878787',
+              fontWeight: 'bold',
+              textAlign: 'right'}}>8 Oct 2017</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
@@ -89,7 +92,7 @@ class NotificationList extends Component {
       <View style={{marginVertical: 25, flex: 1}}>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <NotificationItem item={rowData}/>}
+          renderRow={(rowData) => <NotificationItem item={rowData} navigation={this.props.navigation}/>}
           style={{
             backgroundColor: '#fff',
             borderRadius: 10,

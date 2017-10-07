@@ -18,7 +18,7 @@ const HistoryItem = (props) => {
         }}
       />
       <View style={{paddingLeft: 10}}>
-        <Text style={{fontWeight: 'bold', color: '#231f20', fontStyle: 'italic'}}>Spending on Sakuara Restaurent</Text>
+        <Text style={{fontWeight: 'bold', color: '#231f20', fontStyle: 'italic'}}>Spending on Sakura Restaurant</Text>
         <Text style={{fontSize: 12}}>07 Oct . Invoice number 09283</Text>
       </View>
       <Text style={ props.item.status === 'done' ? styles.pointStatusDone : styles.pointStatus}>
