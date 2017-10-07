@@ -3,5 +3,7 @@ export default Routes = {
   Profile: 'profile',
   Reward: 'reward',
   FlightInfo: 'flight-info',
-  FlightBooking: 'flight-booking'
+  FlightBooking: 'flight-booking',
+  HistoryPoint: 'history-point',
+  NotificationPage: 'notification-page'
 };

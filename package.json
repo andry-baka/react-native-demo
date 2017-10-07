@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"start:ios": "react-native run-ios",
 		"test": "jest"
 	},
 	"dependencies": {
@@ -15,6 +16,7 @@
 		"react-native-loading-spinner-overlay": "^0.5.2",
 		"react-native-modal": "^4.0.0",
 		"react-native-push-notification": "^3.0.1",
+		"react-native-tab-view": "^0.0.69",
 		"react-navigation": "1.0.0-beta.13",
 		"react-redux": "5.0.6",
 		"redux": "3.7.2"
