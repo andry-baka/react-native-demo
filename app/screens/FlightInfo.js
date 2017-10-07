@@ -224,23 +224,215 @@ export default class Profile extends Component {
               width: width - 60,
               height: 115,
               paddingHorizontal: 30,
-              paddingVertical: 15
+              paddingVertical: 15,
+              flexDirection: 'row'
             }}
           >
             <Image
               source={Images.salogo}
-              style={{
-              }}
             />
-            <View>
-              <Text>
+            <View
+              style={{
+                justifyContent: 'center',
+                marginLeft: 15
+              }}
+            >
+              <Text
+                style={{
+                  fontWeight: '600'
+                }}
+              >
                 We are seeing you still not do {'\n'}
                 check-in right now?
               </Text>
-                <TouchableOpacity>
-                </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: '#fea000',
+                  flexDirection: 'row',
+                  width: 160,
+                  paddingVertical: 6,
+                  borderRadius: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginTop: 12
+                }}
+              >
+                <Image
+                  source={Images.goIn}
+                  style={{
+                    width: 13.5,
+                    height: 14.5
+                  }}
+                />
+                <Text
+                  style={{
+                    marginLeft: 10,
+                    color: '#fff',
+                    fontWeight: '700'
+                  }}
+                >
+                  Check-In Now
+                </Text>
+              </TouchableOpacity>
             </View>
           </Image>
+          <View
+            style={{
+              backgroundColor: '#000810',
+              height: 70,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: 12,
+              paddingHorizontal: 18,
+              flexDirection: 'row'
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  color: '#a2a4a5',
+                  fontSize: 13
+                }}
+              >
+                Flight
+              </Text>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontSize: 22,
+                  fontWeight: '600'
+                }}
+              >
+                GA-01
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={{
+                  color: '#a2a4a5',
+                  fontSize: 13
+                }}
+              >
+                Boarding Time
+              </Text>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontSize: 22,
+                  fontWeight: '600'
+                }}
+              >
+                21:15
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={{
+                  color: '#a2a4a5',
+                  fontSize: 13
+                }}
+              >
+                Gate
+              </Text>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontSize: 22,
+                  fontWeight: '600'
+                }}
+              >
+                5
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={{
+                  color: '#a2a4a5',
+                  fontSize: 13
+                }}
+              >
+                Seat
+              </Text>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontSize: 22,
+                  fontWeight: '600'
+                }}
+              >
+                4A
+              </Text>
+            </View>
+          </View>
+          <Text
+            style={{
+              marginLeft: 40,
+              marginTop: 20,
+              fontSize: 18
+            }}
+          >
+            Boarding Pass
+          </Text>
+          <View
+            style={{
+              marginTop: 12,
+              marginLeft: 20,
+              width: width - 110,
+              height: 0.8,
+              backgroundColor: '#cccccc'
+            }}
+          />
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 35,
+              paddingVertical: 20
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  color: '#a2a4a5'
+                }}
+              >
+                Passenger
+              </Text>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: '500'
+                }}
+              >
+                Andry Baka
+              </Text>
+              <Text
+                style={{
+                  color: '#a2a4a5',
+                  marginTop: 14
+                }}
+              >
+                Seat Class
+              </Text>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: '500'
+                }}
+              >
+                Business
+              </Text>
+            </View>
+            <Image
+              source={Images.qrCode}
+              style={{
+                width: 98,
+                height: 98
+              }}
+            />
+          </View>
         </View>
 
       </View>
