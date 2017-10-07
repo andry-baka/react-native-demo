@@ -8,6 +8,7 @@ import Profile from './screens/Profile';
 import Reward from './screens/Reward';
 import FlightInfo from './screens/FlightInfo';
 import FlightBooking from './screens/FlightBooking';
+import HistoryPoint from './screens/HistoryPoint';
 
 // components
 import Notification from './components/Notification';
@@ -19,6 +20,7 @@ import Routes from './config/Routes';
 const store = createStore(reducers);
 
 const MainStackNavigator = StackNavigator({
+  [Routes.HistoryPoint]: { screen: HistoryPoint },
   [Routes.Profile]: { screen: Profile },
   [Routes.Reward]: { screen: Reward },
   [Routes.FlightInfo]: { screen: FlightInfo },
