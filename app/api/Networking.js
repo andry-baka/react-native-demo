@@ -4,16 +4,16 @@
  */
 
 export default class Network {
-  static baseURL = 'http://appchallenge.singaporeair.com';
-  static path = '/api/v2.0';
+  static baseURL = 'https://apidev.singaporeair.com/appchallenge';
+  static path = '';
   static apiURL = `${Network.baseURL}${Network.path}`;
 
-  static get(baseURL = Network.apiURL, endpoint, headers, body) {
-    return Network.callAPI(baseURL, endpoint, 'GET', headers, body);
+  static get(endpoint, headers, body) {
+    return Network.callAPI(Network.apiURL, endpoint, 'GET', headers, body);
   }
 
-  static post(baseURL = Network.apiURL, endpoint, headers, body, stringify = true) {
-    return Network.callAPI(baseURL, endpoint, 'POST', headers, body, stringify);
+  static post(endpoint, headers, body, stringify = true) {
+    return Network.callAPI(Network.apiURL, endpoint, 'POST', headers, body, stringify);
   }
 
   static callAPI(baseURL, endpoint, method, headers, body, stringify = true) {
@@ -22,6 +22,7 @@ export default class Network {
     }
 
     headers['Accept'] = 'application/json';
+    headers['x-api-key'] = 'du1yO8KLZm9PfFeg6OHQW8CFcpK1RMym3JXp78Uk';
     headers['Content-Type'] = stringify ? 'application/json' : 'multipart/form-data';
 
     let queryStringObj = {};
@@ -47,11 +48,13 @@ export default class Network {
       }).then(response => {
         return response.json();
       }).then(json => {
-        // console.log('FETCH JSON: ', json);
+        console.log('FETCH JSON: ', json);
         if (json.err && json.err !== 0) {
           return reject({ msg: json.errMsg });
-        } else if (json.result) {
-          return resolve(json.result);
+        } else if (json.responseBody) {
+          return resolve(json.responseBody);
+        } else if (json.response) {
+          return resolve(json.response);
         }
         reject({msg: 'Wrong data from server'});
       }).catch(error => {
