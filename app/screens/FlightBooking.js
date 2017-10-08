@@ -156,7 +156,7 @@ export default class Profile extends Component {
                 fontWeight: '600'
               }}
             >
-              CGK
+              {FlightData.originAirportCode}
             </Text>
             <Text
               style={{
@@ -164,7 +164,7 @@ export default class Profile extends Component {
                 color: '#7e7e7e'
               }}
             >
-              Jakarta
+              Singapore
             </Text>
           </View>
           <Image
@@ -182,7 +182,7 @@ export default class Profile extends Component {
                 fontWeight: '600'
               }}
             >
-              SIN
+            {FlightData.destAirportCode}
             </Text>
             <Text
               style={{
@@ -190,7 +190,7 @@ export default class Profile extends Component {
                 color: '#7e7e7e'
               }}
             >
-              Singapore
+              Rome
             </Text>
           </View>
         </View>
@@ -293,7 +293,7 @@ export default class Profile extends Component {
               fontSize: 14
             }}
           >
-            <Text style={{fontWeight: 'bold'}}>22:10</Text> 7 Oct
+            <Text style={{fontWeight: 'bold'}}>22:10</Text> 8 Oct
           </Text>
         </View>
         <View>
@@ -302,7 +302,7 @@ export default class Profile extends Component {
               fontSize: 14,
             }}
           >
-            <Text style={{fontWeight: 'bold'}}>00:45</Text> 8 Oct
+            <Text style={{fontWeight: 'bold'}}>00:45</Text> 9 Oct
           </Text>
         </View>
       </View>
@@ -333,7 +333,7 @@ export default class Profile extends Component {
             fontWeight: '600'
           }}
         >
-          Andry Baka
+         {FlightData.name}
         </Text>
       </View>
       <View>
@@ -502,7 +502,7 @@ export default class Profile extends Component {
                         fontWeight: '700'
                       }}
                     >
-                      Seat 4A
+                      Seat {FlightData.seat}
                     </Text>
                     <Text
                       style={{
@@ -510,7 +510,7 @@ export default class Profile extends Component {
                         fontSize: 10
                       }}
                     >
-                      • {'GA-001'} • {'CGK-SIN (21.00 Local Time)'}
+                      • {FlightData.flightNumber} • {'SIN-FCO (21.00 Local Time)'}
                     </Text>
                   </View>
                   <Image
