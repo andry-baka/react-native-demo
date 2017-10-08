@@ -56,6 +56,8 @@ export default class Profile extends Component {
       flightStatus: 'Delay',
       historyPoint: 312,
     });
+    FlightData.flightStatus = 'Delay';
+    FlightData.historyPoint = FlightData.historyPoint + 100;
   };
 
   _getData = () => {
@@ -529,8 +531,8 @@ export default class Profile extends Component {
           <TouchableOpacity
             onPress={() => {
               this.props.navigation.navigate(Routes.HistoryPoint, {
-                historyPoint: this.state.historyPoint,
-                flightStatus: this.state.flightStatus
+                historyPoint: FlightData.historyPoint,
+                flightStatus: FlightData.flightStatus
               })
             }}
           >

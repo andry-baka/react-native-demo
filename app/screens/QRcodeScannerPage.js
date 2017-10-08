@@ -8,8 +8,7 @@ import Routes from './../config/Routes';
 import Images from './../assets/Images';
 import NotificationDetailComponent from '../components/NotificationDetail';
 import QRCodeScanner from 'react-native-qrcode-scanner';
-
-
+import FlightData from './../data/flightData';
 
 const { width, height } = Dimensions.get('window');
 
@@ -19,7 +18,14 @@ class QRcodeScannerPage extends Component {
   }
 
   onSuccess(e) {
-    this.props.navigation.navigate(Routes.HistoryPoint, { qrcode: e.data })
+    this.props.navigation.navigate(Routes.HistoryPoint, {
+      historyPoint: FlightData.historyPoint - 100,
+      flightStatus: FlightData.flightStatus,
+      qrcode: {
+        amount: 50,
+        note: 'aaaaa'
+      }
+    })
   }
 
   render() {
@@ -50,6 +56,7 @@ class QRcodeScannerPage extends Component {
                 }}
               />
             </TouchableOpacity>
+
             <Text
               style={{
                 color: '#fff',

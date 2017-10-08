@@ -38,13 +38,6 @@ const HistoryItem = (props) => {
 
 const historyData = [
   {
-    status: 'pending',
-    type: 'spend',
-    point: 10,
-    title: 'Spending on Sakura Restaurant',
-    description: '08 Oct: Invoice number 09283'
-  },
-  {
     status: 'done',
     type: 'coin',
     point: 10,
@@ -85,12 +78,29 @@ const historyDataWithDelay = [
   ...historyData
 ];
 
+
+const historyDataWithQRSpending = [
+  {
+    status: 'pending',
+    type: 'spend',
+    point: 100,
+    title: 'Spending on Sakura Restaurant',
+    description: '08 Oct: Invoice number 09283'
+  },
+    ...historyData
+];
+
+
 class HistoryList extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    console.log('this.props: ', this.props);
-    const data = this.props.type === 'Delay' ? historyDataWithDelay : historyData;
+    console.log('this.props at history point: ', this.props);
+    let data = historyData;
+    console.log('data BEFORE: ', data);
+    if (this.props.type === 'Delay') data = historyDataWithDelay;
+    if (this.props.qrcode) data = historyDataWithQRSpending;
+    console.log('data AFTER: ', data);
     this.state = {
       dataSource: ds.cloneWithRows(data),
     };

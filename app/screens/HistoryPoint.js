@@ -13,7 +13,10 @@ import PartnerList from '../components/PartnerList';
 
 const FirstRoute = (props) => (
   <View style={[ styles.container, { backgroundColor: '#fff' } ]}>
-    <HistoryPointListComponent type={props.route.flightStatus}/>
+    <HistoryPointListComponent
+      type={props.route.flightStatus}
+      qrcode={props.route.qrcode}
+    />
   </View>
 );
 
@@ -31,7 +34,10 @@ class HistoryPoint extends Component {
   state = {
     index: 0,
     routes: [
-      { key: '1', title: 'History', flightStatus: this.props.navigation.state.params.flightStatus },
+      { key: '1', title: 'History',
+        flightStatus: this.props.navigation.state.params.flightStatus,
+        qrcode: this.props.navigation.state.params.qrcode,
+      },
       { key: '2', title: 'Merchant' },
     ],
   };
@@ -98,7 +104,9 @@ class HistoryPoint extends Component {
   } 
 
   render() {
-    const { historyPoint , flightStatus } = this.props.navigation.state.params;
+    const { historyPoint , flightStatus, qrcode } = this.props.navigation.state.params;
+    console.log('params: ',this.props.navigation.state.params);
+    console.log('qrcode: ',qrcode);
     return (
       <View style={{
         flex: 1,
