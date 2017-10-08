@@ -20,8 +20,10 @@ export default class Profile extends Component {
       originAirportCode,
       destAirportCode,
       flightNumber,
-      flightTime
+      flightTime,
+      seat
     } = FlightData;
+    const paid = seat !== 'N/A';
     return (
       <View
         style={{
@@ -248,46 +250,60 @@ export default class Profile extends Component {
                 marginLeft: 15
               }}
             >
-              <Text
-                style={{
-                  fontWeight: '600'
-                }}
-              >
-                We are seeing you still not do {'\n'}
-                check-in right now?
-              </Text>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#fea000',
-                  flexDirection: 'row',
-                  width: 160,
-                  paddingVertical: 6,
-                  borderRadius: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: 12
-                }}
-                onPress={() => {
-                  this.props.navigation.navigate(Routes.FlightBooking);
-                }}
-              >
-                <Image
-                  source={Images.goIn}
-                  style={{
-                    width: 13.5,
-                    height: 14.5
-                  }}
-                />
+              { paid && (
                 <Text
                   style={{
-                    marginLeft: 10,
-                    color: '#fff',
-                    fontWeight: '700'
+                    fontWeight: '600'
                   }}
                 >
-                  Check-In Now
+                  All set! Please make sure,{'\n'}you already on Airport 2 hours before boarding time.
                 </Text>
-              </TouchableOpacity>
+              )}
+              { !paid && (
+                <View>
+                  <Text
+                    style={{
+                      fontWeight: '600'
+                    }}
+                  >
+                    We are seeing you still not do {'\n'}
+                    check-in right now?
+                  </Text>
+                  <TouchableOpacity
+                    style={{
+                      backgroundColor: '#fea000',
+                      flexDirection: 'row',
+                      width: 160,
+                      paddingVertical: 6,
+                      borderRadius: 10,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginTop: 12
+                    }}
+                    onPress={() => {
+                      this.props.navigation.navigate(Routes.FlightBooking);
+                    }}
+                  >
+                    <Image
+                      source={Images.goIn}
+                      style={{
+                        width: 13.5,
+                        height: 14.5
+                      }}
+                    />
+                    <Text
+                      style={{
+                        marginLeft: 10,
+                        color: '#fff',
+                        fontWeight: '700'
+                      }}
+                    >
+                      Check-In Now
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+
             </View>
           </Image>
           <View
@@ -379,78 +395,125 @@ export default class Profile extends Component {
               </Text>
             </View>
           </View>
-          <Text
-            style={{
-              marginLeft: 40,
-              marginTop: 20,
-              fontSize: 16,
-                fontWeight: 'bold'
-            }}
-          >
-            Boarding Pass
-          </Text>
-          <View
-            style={{
-              marginTop: 8,
-              marginLeft: 20,
-              width: width - 110,
-              height: 0.8,
-              backgroundColor: '#cccccc'
-            }}
-          />
-
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              paddingHorizontal: 35,
-              paddingVertical: 20
-            }}
-          >
-            <View>
-              <Text
-                style={{
-                  color: '#a2a4a5',
-                    fontSize: 13
-                }}
-              >
-                Passenger
-              </Text>
-              <Text
-                style={{
+          { paid &&
+            (
+              <View>
+                <Text
+                  style={{
+                    marginLeft: 40,
+                    marginTop: 20,
                     fontSize: 16,
-                    fontWeight: 'bold',
-                    marginTop: 5
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Boarding Pass
+                </Text>
+                <View
+                  style={{
+                    marginTop: 8,
+                    marginLeft: 20,
+                    width: width - 110,
+                    height: 0.8,
+                    backgroundColor: '#cccccc'
+                  }}
+                />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    paddingHorizontal: 35,
+                    paddingVertical: 20
+                  }}
+                >
+                  <View>
+                    <Text
+                      style={{
+                        color: '#a2a4a5',
+                        fontSize: 13
+                      }}
+                    >
+                      Passenger
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                        marginTop: 5
+                      }}
+                    >
+                      APPCHALLENGE
+                    </Text>
+                    <Text
+                      style={{
+                        color: '#a2a4a5',
+                        marginTop: 13
+                      }}
+                    >
+                      Seat Class
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                        marginTop: 5
+                      }}
+                    >
+                      {flightClass}
+                    </Text>
+                  </View>
+                  <Image
+                    source={Images.qrCode}
+                    style={{
+                      width: 98,
+                      height: 98
+                    }}
+                  />
+                </View>
+              </View>
+            )
+          }
+          { !paid &&
+          (
+            <View style={{justifyContent: 'center', flex: 1, paddingHorizontal: 20}}>
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: '#7c7c7c',
+                  fontWeight: 'bold'
                 }}
               >
-                APPCHALLENGE
+                *Note
               </Text>
               <Text
                 style={{
-                  color: '#a2a4a5',
-                  marginTop: 13
+                  marginTop: 10,
+                  fontSize: 12,
+                  color: '#7c7c7c'
                 }}
               >
-                Seat Class
+                - Do the Check-In now so we can display your boarding pass
               </Text>
               <Text
                 style={{
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    marginTop: 5
+                  marginTop: 10,
+                  fontSize: 12,
+                  color: '#7c7c7c'
                 }}
               >
-                {flightClass}
+                - You need to come to Airport 2 hours before boarding time
+              </Text>
+              <Text
+                style={{
+                  marginTop: 10,
+                  fontSize: 12,
+                  color: '#7c7c7c'
+                }}
+              >
+                - Please remember you are not allowed to bring the prohibited items during flight time
               </Text>
             </View>
-            <Image
-              source={Images.qrCode}
-              style={{
-                width: 98,
-                height: 98
-              }}
-            />
-          </View>
+          )
+          }
         </View>
 
       </View>
