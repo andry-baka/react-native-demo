@@ -13,6 +13,7 @@ export default class Payment extends Component {
     super(props);
 
     this.state = {
+      running: false,
       message: '',
       fingerprintTop: new Animated.Value(0),
       fingerPrintOpacity: new Animated.Value(0),
@@ -28,7 +29,10 @@ export default class Payment extends Component {
   }
 
   componentDidMount() {
-    this._playAnimation();
+    this.setState({
+      message: 'Authenticate your identity\nfor payment'
+    });
+    this.state.fingerPrintOpacity.setValue(1);
   }
 
   componentWillUnmount() {
@@ -117,20 +121,9 @@ export default class Payment extends Component {
   };
 
   _animateFingerPrint = async () => {
-    this.setState({
-      message: 'Authenticate your identity\nfor payment'
-    });
     this.refs.circularProgress.performLinearAnimation(50, 1000);
-    this.state.fingerPrintOpacity.setValue(0);
+    this.state.fingerPrintOpacity.setValue(1);
     this.state.fingerprintTop.setValue(0);
-    Animated.timing(
-      this.state.fingerPrintOpacity,
-      {
-        toValue: 1,
-        duration: 500,
-        easing: Easing.linear
-      }
-    ).start();
     await this._delay(1000);
     Animated.parallel([
       Animated.timing(
@@ -313,7 +306,7 @@ export default class Payment extends Component {
         }}
       >
         { this._renderHeader() }
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{flex: 1, marginTop: -150, alignItems: 'center', justifyContent: 'center'}}>
           <View style={{ width: 100, height: 100 }}>
             <AnimatedCircularProgress
               ref='circularProgress'
@@ -349,6 +342,24 @@ export default class Payment extends Component {
             shadowColor: '#000', shadowOffset: {width: 0, height: 1}, shadowOpacity: 0.6, shadowRadius: 1.5,
           }}
         />
+        {
+          this.state.running === false &&
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              width,
+              height: 500,
+              top: height - 500,
+            }}
+            activeOpacity={0}
+            onPress={() => {
+              this.setState({
+                running: true
+              });
+              this._playAnimation()
+            }}
+          />
+        }
       </View>
     );
   }
