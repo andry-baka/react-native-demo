@@ -182,7 +182,7 @@ export default class Payment extends Component {
         easing: Easing.easeOut
       }
     ).start();
-    await this._delay(1500);
+    await this._delay(2000);
     const resetAction = NavigationActions.reset({
       index: 1,
       actions: [
