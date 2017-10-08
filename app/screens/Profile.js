@@ -602,30 +602,7 @@ export default class Profile extends Component {
 
         {this._renderName()}
 
-        <TouchableWithoutFeedback onPress={this._changeToDelay} >
-          <View
-            style={{
-              marginTop: 10,
-              backgroundColor: '#000',
-              width,
-              height: 60,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Text
-              style={{
-                color: '#fff',
-                textAlign: 'center',
-                backgroundColor: 'transparent',
-                fontStyle: 'italic'
-              }}
-            >
-              Don’t forget you will have flight{'\n'}
-              tomorrow evening
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
+        { this._renderSuggestionMessage() }
 
         <TouchableOpacity
           onPress={this._showModal}
