@@ -6,6 +6,7 @@ import Routes from './../config/Routes';
 import Images from './../assets/Images';
 const { width, height } = Dimensions.get('window');
 
+import FlightData from './../data/flightData';
 export default class Profile extends Component {
   constructor(props) {
     super(props);
@@ -155,7 +156,7 @@ export default class Profile extends Component {
                 fontWeight: '600'
               }}
             >
-              SIN
+              {FlightData.originAirportCode}
             </Text>
             <Text
               style={{
@@ -181,7 +182,7 @@ export default class Profile extends Component {
                 fontWeight: '600'
               }}
             >
-              FCO
+            {FlightData.destAirportCode}
             </Text>
             <Text
               style={{
@@ -292,7 +293,7 @@ export default class Profile extends Component {
               fontSize: 14
             }}
           >
-            <Text style={{fontWeight: 'bold'}}>21:45</Text> 8 Oct
+            <Text style={{fontWeight: 'bold'}}>22:10</Text> 8 Oct
           </Text>
         </View>
         <View>
@@ -301,7 +302,7 @@ export default class Profile extends Component {
               fontSize: 14,
             }}
           >
-            <Text style={{fontWeight: 'bold'}}>00:15</Text> 9 Oct
+            <Text style={{fontWeight: 'bold'}}>00:45</Text> 9 Oct
           </Text>
         </View>
       </View>
@@ -333,7 +334,7 @@ export default class Profile extends Component {
             fontWeight: '600'
           }}
         >
-          Sia Appchallenge
+         {FlightData.name}
         </Text>
       </View>
       <View>
@@ -449,6 +450,8 @@ export default class Profile extends Component {
                 this.setState({
                   showPopup: true
                 });
+                FlightData.seat = '4A';
+                FlightData.gate = '5';
               }}
             >
             </TouchableOpacity>
@@ -470,7 +473,9 @@ export default class Profile extends Component {
                   onPress={() => {
                     this.setState({
                       showPopupFlightInfo: true
-                    })
+                    });
+                    FlightData.seat = '4A';
+                    FlightData.gate = '5';
                   }}
                 >
                   <Image
@@ -499,7 +504,7 @@ export default class Profile extends Component {
                         fontWeight: '700'
                       }}
                     >
-                      Seat 4A
+                      Seat {FlightData.seat}
                     </Text>
                     <Text
                       style={{
@@ -507,7 +512,7 @@ export default class Profile extends Component {
                         fontSize: 10
                       }}
                     >
-                      • {'SQ-366'} • {'SIN-FCO (21:45 Local Time)'}
+                      • {FlightData.flightNumber} • {'SIN-FCO (21.00 Local Time)'}
                     </Text>
                   </View>
                   <Image

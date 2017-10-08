@@ -23,18 +23,7 @@ export default class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Sia APPCHALLENGE',
-      originAirportCode: '',
-      destAirportCode: '',
-      seat: '',
-      flightDate: '',
-      flightTime: '',
-      scheduledDepartureTime: '',
-      flightClass: '',
-      flightNumber: '',
-      flightStatus: 'On Schedule',
-      historyPoint: 212,
-
+      ...FlightData,
       visible: false,
       isModalVisible: false,
       isDataFetched: false,
@@ -84,7 +73,7 @@ export default class Profile extends Component {
         name: firstName + ' ' + lastName,
         originAirportCode: origin.airportCode,
         destAirportCode: destination.airportCode,
-        seat: seatNumber,
+        //seat: seatNumber,
         flightDate: moment(scheduledDepartureTime).format('DD MMM'),
         flightTime: moment(scheduledDepartureTime).format('HH:mm'),
         scheduledDepartureTime: scheduledDepartureTime,
@@ -96,7 +85,7 @@ export default class Profile extends Component {
       FlightData.name = firstName + ' ' + lastName;
       FlightData.originAirportCode = origin.airportCode;
       FlightData.destAirportCode = destination.airportCode;
-      FlightData.seat = seatNumber;
+      //FlightData.seat = seatNumber;
       FlightData.flightDate = moment(scheduledDepartureTime).format('DD MMM');
       FlightData.flightTime = moment(scheduledDepartureTime).format('HH:mm');
       FlightData.scheduledDepartureTime = scheduledDepartureTime;
@@ -445,7 +434,45 @@ export default class Profile extends Component {
           width: 1,
           height: 46,
           backgroundColor: '#e7e7e7',
-          marginHorizontal: 20
+          marginHorizontal: 10
+        }}
+      />
+      <View
+        style={{
+          alignItems: 'center'
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 13,
+            color: '#616161'
+          }}
+        >
+          Seat
+        </Text>
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: '600'
+          }}
+        >
+        {FlightData.seat}
+        </Text>
+        <Text
+          style={{
+            color: '#80ae54',
+            fontSize: 10
+          }}
+        >
+          Gate {FlightData.gate}
+        </Text>
+      </View>
+      <View
+        style={{
+          width: 1,
+          height: 46,
+          backgroundColor: '#e7e7e7',
+          marginHorizontal: 10
         }}
       />
       <View>

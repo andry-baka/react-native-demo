@@ -356,7 +356,7 @@ export default class Profile extends Component {
                   fontWeight: '600'
                 }}
               >
-                5
+               {FlightData.gate}
               </Text>
             </View>
             <View>
