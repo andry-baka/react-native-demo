@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import {
   View, Text, Button, Image, StatusBar, Dimensions,
-  TextInput,
+  TextInput, Animated,
   TouchableOpacity, TouchableWithoutFeedback
 } from 'react-native';
 import Modal from 'react-native-modal';
@@ -14,12 +14,14 @@ import Images from './../assets/Images';
 
 import Networking from './../api/Networking';
 
+import FlightData from './../data/flightData';
+
 const { width, height } = Dimensions.get('window');
+const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
 export default class Profile extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       name: 'Sia APPCHALLENGE',
       originAirportCode: '',
@@ -35,7 +37,11 @@ export default class Profile extends Component {
 
       visible: false,
       isModalVisible: false,
-      isDataFetched: false
+      isDataFetched: false,
+
+      suggestionMessageHeight: new Animated.Value(0),
+      suggestionMessageOpacity: new Animated.Value(0),
+      flightInfoOpacity: new Animated.Value(0)
     };
   }
 
@@ -52,7 +58,7 @@ export default class Profile extends Component {
       flightStatus: 'Delay',
       historyPoint: 312,
     });
-  }
+  };
 
   _getData = () => {
     const PNRReq = {
@@ -73,6 +79,7 @@ export default class Profile extends Component {
       const { marketingAirlineCode, scheduledDepartureTime, cabinClass } = flightSegment[0];
 
       this.setState({
+        visible: false,
         isDataFetched: true,
         name: firstName + ' ' + lastName,
         originAirportCode: origin.airportCode,
@@ -85,19 +92,54 @@ export default class Profile extends Component {
         flightNumber: marketingAirlineCode + '-' + flightNumber
       });
 
-      this.setState({ visible: false });
+      // store on global variable
+      FlightData.name = firstName + ' ' + lastName;
+      FlightData.originAirportCode = origin.airportCode;
+      FlightData.destAirportCode = destination.airportCode;
+      FlightData.seat = seatNumber;
+      FlightData.flightDate = moment(scheduledDepartureTime).format('DD MMM');
+      FlightData.flightTime = moment(scheduledDepartureTime).format('HH:mm');
+      FlightData.scheduledDepartureTime = scheduledDepartureTime;
+      FlightData.flightClass = cabinClass;
+      FlightData.flightNumber = marketingAirlineCode + '-' + flightNumber;
+
+      this._showFlightInfo();
 
     }, function(error) {
       console.error("Failed!", error);
     });
-  }
+  };
+
+  _showFlightInfo = () => {
+    this.state.suggestionMessageHeight.setValue(0);
+    this.state.suggestionMessageOpacity.setValue(0);
+    this.state.flightInfoOpacity.setValue(0);
+    Animated.sequence([
+      Animated.timing(
+        this.state.suggestionMessageHeight,
+        {
+          toValue: 60,
+          duration: 500
+        }
+      ),
+      Animated.timing(
+        this.state.suggestionMessageOpacity,
+        {
+          toValue: 1,
+          duration: 500
+        }
+      ),
+      Animated.timing(
+        this.state.flightInfoOpacity,
+        {
+          toValue: 1,
+          duration: 500
+        }
+      )
+    ]).start();
+  };
 
   componentDidMount() {
-    PushNotification.localNotificationSchedule({
-      message: "My Notification Message",
-      date: new Date(Date.now() + (3 * 1000)) // in 60 secs
-    });
-
     // const req = {
     //   request: {
     //     pnr: "RVA7GY"
@@ -298,7 +340,7 @@ export default class Profile extends Component {
 
   _renderStat = () => {
     return (
-    <TouchableOpacity
+    <AnimatedTouchableOpacity
       style={{
         marginTop: 26,
         width: 350,
@@ -311,7 +353,8 @@ export default class Profile extends Component {
         shadowRadius:1.5,
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        opacity: this.state.flightInfoOpacity
       }}
       onPress={() => {
         this.props.navigation.navigate(Routes.FlightInfo, { state: this.state });
@@ -402,45 +445,7 @@ export default class Profile extends Component {
           width: 1,
           height: 46,
           backgroundColor: '#e7e7e7',
-          marginHorizontal: 10
-        }}
-      />
-      <View
-        style={{
-          alignItems: 'center'
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 13,
-            color: '#616161'
-          }}
-        >
-          Seat
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: '600'
-          }}
-        >
-        {this.state.seat}
-        </Text>
-        <Text
-          style={{
-            color: '#80ae54',
-            fontSize: 10
-          }}
-        >
-          Gate 5
-        </Text>
-      </View>
-      <View
-        style={{
-          width: 1,
-          height: 46,
-          backgroundColor: '#e7e7e7',
-          marginHorizontal: 10
+          marginHorizontal: 20
         }}
       />
       <View>
@@ -469,9 +474,43 @@ export default class Profile extends Component {
           {this.state.flightStatus}
         </Text>
       </View>
-    </TouchableOpacity>
+    </AnimatedTouchableOpacity>
     )
-  }
+  };
+
+  _renderSuggestionMessage = () => {
+    return (
+      <TouchableWithoutFeedback onPress={this._changeToDelay} >
+        <Animated.View
+          style={{
+            marginTop: 10,
+            backgroundColor: '#000',
+            width,
+            height: this.state.suggestionMessageHeight,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Animated.View
+            style={{
+              opacity: this.state.suggestionMessageOpacity
+            }}
+          >
+            <Text
+              style={{
+                color: '#fff',
+                textAlign: 'center',
+                backgroundColor: 'transparent',
+              }}
+            >
+              Don’t forget you will have flight{'\n'}
+              tomorrow evening
+            </Text>
+          </Animated.View>
+        </Animated.View>
+      </TouchableWithoutFeedback>
+    );
+  };
 
   render() {
     return (
@@ -579,7 +618,7 @@ export default class Profile extends Component {
 
         {this._renderModal()}
 
-        {this.state.isDataFetched && this._renderStat()}
+        {this._renderStat()}
       </View>
     );
   }

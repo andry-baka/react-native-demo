@@ -5,13 +5,26 @@ import {
 import Routes from './../config/Routes';
 import Images from './../assets/Images';
 import NotificationDetailComponent from '../components/NotificationDetail';
-
+import Confetti from 'react-native-confetti';
 
 const { width, height } = Dimensions.get('window');
 
 class NotificationDetailPage extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    if (this._confettiView) {
+      this._confettiView.startConfetti();
+    }
+  }
+
+  componentWillUnmount ()
+  {
+    if (this._confettiView) {
+      this._confettiView.stopConfetti();
+    }
   }
 
   render() {
@@ -60,6 +73,10 @@ class NotificationDetailPage extends Component {
           </View>
         </View>
         <NotificationDetailComponent />
+        <Confetti
+          ref={(node) => this._confettiView = node}
+          confettiCount={300}
+        />
       </View>
     );
   }

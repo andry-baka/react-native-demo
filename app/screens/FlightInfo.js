@@ -6,6 +6,8 @@ import Routes from './../config/Routes';
 import Images from './../assets/Images';
 const { width, height } = Dimensions.get('window');
 
+import FlightData from './../data/flightData';
+
 export default class Profile extends Component {
   constructor(props) {
     super(props);
@@ -373,7 +375,7 @@ export default class Profile extends Component {
                   fontWeight: '600'
                 }}
               >
-                4A
+               {FlightData.seat}
               </Text>
             </View>
           </View>
