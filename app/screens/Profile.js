@@ -30,8 +30,17 @@ export default class Profile extends Component {
 
       suggestionMessageHeight: new Animated.Value(0),
       suggestionMessageOpacity: new Animated.Value(0),
-      flightInfoOpacity: new Animated.Value(0)
+      // flightInfoOpacity: new Animated.Value(0)
     };
+  }
+
+  componentDidMount() {
+    if((FlightData.originAirportCode || '').length > 0) {
+      this.setState({
+        isDataFetched: true
+      });
+      this._showFlightInfo();
+    }
   }
 
   _showModal = () => this.setState({ isModalVisible: true })
@@ -102,7 +111,7 @@ export default class Profile extends Component {
   _showFlightInfo = () => {
     this.state.suggestionMessageHeight.setValue(0);
     this.state.suggestionMessageOpacity.setValue(0);
-    this.state.flightInfoOpacity.setValue(0);
+    // this.state.flightInfoOpacity.setValue(0);
     Animated.sequence([
       Animated.timing(
         this.state.suggestionMessageHeight,
@@ -118,65 +127,15 @@ export default class Profile extends Component {
           duration: 500
         }
       ),
-      Animated.timing(
-        this.state.flightInfoOpacity,
-        {
-          toValue: 1,
-          duration: 500
-        }
-      )
+      // Animated.timing(
+      //   this.state.flightInfoOpacity,
+      //   {
+      //     toValue: 1,
+      //     duration: 500
+      //   }
+      // )
     ]).start();
   };
-
-  componentDidMount() {
-    // const req = {
-    //   request: {
-    //     pnr: "RVA7GY"
-    //   },
-    //   clientUUID: "AnyUniqueStringToIdentifyTheRequest"
-    // };
-
-    // Networking.post('/checkin/getpassenger', {}, req)
-    // .then(function(response) {
-    //   const { flights } = response;
-    //   const { origin, destination, scheduledDepartureDateTime, operatingAirline: {
-    //     airlineCode, flightNumber
-    //   } } = flights[0];
-    //   console.log("origin.airportCode: ", origin.airportCode);
-    //   console.log("destination.airportCode: ", destination.airportCode);
-    //   console.log("scheduledDepartureDateTime: ", scheduledDepartureDateTime);
-    //   console.log("no: ", airlineCode+flightNumber);
-
-    //   const { services } = response;
-    //   const { seatSelected, cabinClass, dcsStatus } = services[0];
-    //   console.log("seatSelected: ", seatSelected);
-    //   console.log("cabinClass: ", cabinClass);
-    //   console.log("dcsStatus: ", dcsStatus);
-    // }, function(error) {
-    //   console.error("Failed!", error);
-    // });
-
-    // const KFReq = {
-    //   request: {
-    //     krisflyerNumber: "8987011905"
-    //   },
-    //   clientUUID: "AnyUniqueStringToIdentifyTheRequest"
-    // };
-
-
-    // Networking.post('/krisflyer/getprofile', {}, KFReq)
-    // .then(function(response) {
-    //   const { accountSummary: {
-    //     kfMiles
-    //   }, loyaltyTierName } = response;
-
-    //   console.log("response: ", response);
-    //   console.log("kfMiles: ", kfMiles);
-    //   console.log("loyaltyTierName: ", loyaltyTierName);
-    // }, function(error) {
-    //   console.error("Failed!", error);
-    // });
-  }
 
   _renderModal = () => {
     return (
@@ -330,7 +289,7 @@ export default class Profile extends Component {
 
   _renderStat = () => {
     return (
-    <AnimatedTouchableOpacity
+    <TouchableOpacity
       style={{
         marginTop: 26,
         width: 350,
@@ -344,7 +303,6 @@ export default class Profile extends Component {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
-        opacity: this.state.flightInfoOpacity
       }}
       onPress={() => {
         this.props.navigation.navigate(Routes.FlightInfo, { state: this.state });
@@ -502,7 +460,7 @@ export default class Profile extends Component {
           {this.state.flightStatus}
         </Text>
       </View>
-    </AnimatedTouchableOpacity>
+    </TouchableOpacity>
     )
   };
 
@@ -635,7 +593,7 @@ export default class Profile extends Component {
 
         {this._renderModal()}
 
-        {this._renderStat()}
+        { this.state.isDataFetched && this._renderStat() }
       </View>
     );
   }
