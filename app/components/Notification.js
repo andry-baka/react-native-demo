@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {
   View, StyleSheet, Dimensions, Text, TouchableOpacity, Animated
 } from 'react-native';
+import Routes from '../config/Routes';
+import Images from './../assets/Images'
 const { width } = Dimensions.get('window');
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 class Notification extends Component {
@@ -12,7 +14,7 @@ class Notification extends Component {
     this.state = {
       top: new Animated.Value(-100),
       message: ''
-    }
+    };
   }
 
   componentWillReceiveProps(newProps) {
@@ -46,6 +48,20 @@ class Notification extends Component {
   _onPress = () => {
     clearTimeout(this.timeOutId);
     this._hide();
+    if(global.myNavigation) {
+      global.myNavigation.navigate(Routes.NotificationDetailPage, {
+        notificationItem: {
+          title: '+50 Point SIA Happy birthday you',
+          icon: Images.cake,
+          icon2x: Images.cake2x,
+          description: 'Today is your birthday',
+          point: 50,
+          type: 'coin',
+          birthday: true,
+          date: '08 Oct 2017'
+        },
+      });
+    }
   };
 
   render() {
