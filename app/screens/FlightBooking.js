@@ -6,6 +6,7 @@ import Routes from './../config/Routes';
 import Images from './../assets/Images';
 const { width, height } = Dimensions.get('window');
 
+import FlightData from './../data/flightData';
 export default class Profile extends Component {
   constructor(props) {
     super(props);
@@ -447,6 +448,8 @@ export default class Profile extends Component {
                 this.setState({
                   showPopup: true
                 });
+                FlightData.seat = '4A';
+                FlightData.gate = '5';
               }}
             >
             </TouchableOpacity>
@@ -468,7 +471,9 @@ export default class Profile extends Component {
                   onPress={() => {
                     this.setState({
                       showPopupFlightInfo: true
-                    })
+                    });
+                    FlightData.seat = '4A';
+                    FlightData.gate = '5';
                   }}
                 >
                   <Image
