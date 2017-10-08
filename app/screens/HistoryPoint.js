@@ -31,8 +31,8 @@ class HistoryPoint extends Component {
   state = {
     index: 0,
     routes: [
-      { key: '1', title: 'Point History', flightStatus: this.props.navigation.state.params.flightStatus },
-      { key: '2', title: 'Partnership' },
+      { key: '1', title: 'History', flightStatus: this.props.navigation.state.params.flightStatus },
+      { key: '2', title: 'Merchant' },
     ],
   };
 
@@ -104,18 +104,20 @@ class HistoryPoint extends Component {
           width: 150,
           borderRadius: 10,
           backgroundColor: '#fea000',
-          padding: 10,
+          padding: 8,
           marginBottom: 50,
           flexDirection: 'row',
           justifyContent: 'center'
         }}>
           <Text style={{
             color: '#fff',
-            fontWeight: '900'
+            fontWeight: '900',
+              fontSize: 16
             }}>{historyPoint}
           </Text>
           <Text style={{
-            color: '#fff'
+            color: '#fff',
+              fontSize: 16
             }}> Pts
           </Text>
         </View>
