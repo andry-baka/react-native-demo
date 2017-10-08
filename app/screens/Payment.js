@@ -31,6 +31,10 @@ export default class Payment extends Component {
     this._playAnimation();
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timeoutId);
+  }
+
   _playAnimation = async () => {
     await this._animateFingerPrint();
     await this._animateMasterCard();
