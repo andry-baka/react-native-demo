@@ -16,7 +16,7 @@ const HistoryItem = (props) => {
   };
 
   return (
-    <View style={{flexDirection: 'row', borderBottomColor: '#878787', borderBottomWidth: 1, padding: 20, justifyContent: 'space-between'}}>
+    <View style={{flexDirection: 'row', borderBottomColor: '#eaeaea', borderBottomWidth: 1, padding: 20, justifyContent: 'space-between'}}>
       <Image 
         source={icon}
         style= {{

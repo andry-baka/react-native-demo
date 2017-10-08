@@ -14,12 +14,13 @@ import Images from './../assets/Images';
 
 import Networking from './../api/Networking';
 
+import FlightData from './../data/flightData';
+
 const { width, height } = Dimensions.get('window');
 
 export default class Profile extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       name: 'Sia APPCHALLENGE',
       originAirportCode: '',
@@ -73,6 +74,7 @@ export default class Profile extends Component {
       const { marketingAirlineCode, scheduledDepartureTime, cabinClass } = flightSegment[0];
 
       this.setState({
+        visible: false,
         isDataFetched: true,
         name: firstName + ' ' + lastName,
         originAirportCode: origin.airportCode,
@@ -85,7 +87,16 @@ export default class Profile extends Component {
         flightNumber: marketingAirlineCode + '-' + flightNumber
       });
 
-      this.setState({ visible: false });
+      // store on global variable
+      FlightData.name = firstName + ' ' + lastName;
+      FlightData.originAirportCode = origin.airportCode;
+      FlightData.destAirportCode = destination.airportCode;
+      FlightData.seat = seatNumber;
+      FlightData.flightDate = moment(scheduledDepartureTime).format('DD MMM');
+      FlightData.flightTime = moment(scheduledDepartureTime).format('HH:mm');
+      FlightData.scheduledDepartureTime = scheduledDepartureTime;
+      FlightData.flightClass = cabinClass;
+      FlightData.flightNumber = marketingAirlineCode + '-' + flightNumber;
 
     }, function(error) {
       console.error("Failed!", error);
