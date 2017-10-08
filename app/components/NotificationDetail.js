@@ -32,7 +32,7 @@ class NotificationList extends Component {
         <View>
           <View style={{
             borderBottomColor: '#eaeaea',
-            borderBottomWidth: 2,
+            borderBottomWidth: 1,
             paddingTop: 20,
             paddingBottom: 20
           }}>
@@ -40,7 +40,7 @@ class NotificationList extends Component {
           </View>
           <View style={{
             borderBottomColor: '#eaeaea',
-            borderBottomWidth: 2,
+            borderBottomWidth: 1,
             paddingTop: 20,
             paddingBottom: 20
           }}>
@@ -48,8 +48,8 @@ class NotificationList extends Component {
             <Text style={{color: '#878787', fontWeight: '400', textAlign: 'center'}}>{notificationItem.date}</Text>
           </View>
           <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 30}}>
-              {notificationItem.type === 'coin' && <Text style={{color: '#231f20', fontWeight: 'bold', fontSize: 17, marginTop: -10}}>Point added: </Text>}
-              {notificationItem.type === 'spend' && <Text style={{color: '#231f20', fontWeight: 'bold', fontSize: 17, marginTop: -10}}>Point deducted: </Text>}
+              {notificationItem.type === 'coin' && <Text style={{color: '#231f20', fontWeight: 'bold', fontSize: 17, }}>Point added: </Text>}
+              {notificationItem.type === 'spend' && <Text style={{color: '#231f20', fontWeight: 'bold', fontSize: 17, }}>Point deducted: </Text>}
               <Text style={{color: '#000', fontWeight: 'bold', fontSize: 20}}>{notificationItem.point}</Text>
           </View>
           <Text style={{color: '#878787', fontStyle: 'italic', marginBottom: 10}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</Text>

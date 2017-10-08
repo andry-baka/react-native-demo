@@ -11,8 +11,8 @@ const NotificationItem = (props) => {
   const { navigate } = props.navigation;
 
   return (
-    <TouchableOpacity onPress={() => { navigate(Routes.NotificationDetailPage, {
-      notificationItem: notification})
+    <TouchableOpacity onPress={() => {
+      navigate(Routes.NotificationDetailPage, { notificationItem: notification})
     }} >
       <View style={{flexDirection: 'row', borderBottomColor: '#eaeaea', borderBottomWidth: 1, padding: 15 , flex: 1}}>
         <View>
@@ -78,7 +78,10 @@ const notificationDataWithDelay = [
     title: '+100 Points Delay SIA from SIN to FCO',
     icon: Images.delay,
     icon2x: Images.delay2x,
-    description: 'SQ-366 Delay 90 mins SIN to FCO'
+    description: 'SQ-366 Delay 90 mins SIN to FCO',
+    type: 'coin',
+    point: 100,
+    date: '08 Oct 2017'
   },
   ...notificationData
 ];

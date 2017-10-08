@@ -78,7 +78,9 @@ class QRcodeScannerPage extends Component {
             onRead = {this.onSuccess.bind(this)}
             bottomContent={
               <TouchableOpacity style={styles.buttonTouchable}>
-                <View style={{borderRadius: 50, backgroundColor: '#000', padding: 20}}>
+                <View style={{borderRadius: 50, backgroundColor: '#000', padding: 20,
+                shadowColor: '#000', shadowOffset: {width: 0, height: 1}, shadowOpacity: 0.4, shadowRadius:1.5,
+                }}>
                   <Text style={styles.buttonText}>Pay</Text>
                 </View>
               </TouchableOpacity>

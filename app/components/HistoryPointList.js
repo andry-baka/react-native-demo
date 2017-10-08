@@ -3,7 +3,7 @@ import {
   View, Text, ListView, Image, StyleSheet
 } from 'react-native';
 import Routes from './../config/Routes';
-
+import Images from './../assets/Images';
 
 const HistoryItem = (props) => {
   let icon = '';
@@ -73,7 +73,10 @@ const historyDataWithDelay = [
     type: 'delay',
     point: 100,
     title: 'Delay SIA from SIN to FCO',
-    description: '08 Oct: SQ-366 Delay 90 mins SIN to FCO'
+    description: '08 Oct: SQ-366 Delay 90 mins SIN to FCO',
+    icon: Images.cake,
+    icon2x: Images.cake2x,
+    date: '08 Oct 2017'
   },
   ...historyData
 ];
@@ -97,10 +100,8 @@ class HistoryList extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     console.log('this.props at history point: ', this.props);
     let data = historyData;
-    console.log('data BEFORE: ', data);
     if (this.props.type === 'Delay') data = historyDataWithDelay;
     if (this.props.qrcode) data = historyDataWithQRSpending;
-    console.log('data AFTER: ', data);
     this.state = {
       dataSource: ds.cloneWithRows(data),
     };

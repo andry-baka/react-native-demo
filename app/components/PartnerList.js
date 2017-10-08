@@ -24,7 +24,7 @@ const PartnerItem = (props) => {
         style={{
           paddingLeft: 5,
           position: 'absolute',
-          backgroundColor: 'rgba(51, 51, 51, 0.6)',
+          backgroundColor: 'rgba(51, 51, 51, 0.8)',
           width: width/2,
           height: 40,
           top: width/2 - 40,
