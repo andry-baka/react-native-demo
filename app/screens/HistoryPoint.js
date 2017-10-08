@@ -84,6 +84,9 @@ class HistoryPoint extends Component {
       onPress={() => {
         this.props.navigation.navigate(Routes.QRcodeScanner, { flightStatus: this.state.flightStatus })
       }}
+      style={{
+        marginTop: -10
+      }}
       >
         <Image
           source={Images.qrCode}
