@@ -39,6 +39,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		CB48CA011F87D3C10087D100 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB48C9FD1F87D3BB0087D100 /* libRCTPushNotification.a */; };
 		CB4BBA341F8944790013473D /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4BBA101F89443D0013473D /* libART.a */; };
+		CB4C33141F89CFAA00DE3FD7 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4C32F71F89CF8C00DE3FD7 /* libRCTCamera.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,6 +274,13 @@
 			remoteGlobalIDString = 323A12871E5F266B004975B8;
 			remoteInfo = "ART-tvOS";
 		};
+		CB4C32F61F89CF8C00DE3FD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4C32EB1F89CF8C00DE3FD7 /* RCTCamera.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
+			remoteInfo = RCTCamera;
+		};
 		CB63DCD71F89076100FCE952 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -332,6 +340,7 @@
 		CB48C9F61F87D3060087D100 /* siahackathon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = siahackathon.entitlements; path = siahackathon/siahackathon.entitlements; sourceTree = "<group>"; };
 		CB48C9F71F87D3BB0087D100 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		CB4BBA0A1F89443D0013473D /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
+		CB4C32EB1F89CF8C00DE3FD7 /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB4C33141F89CFAA00DE3FD7 /* libRCTCamera.a in Frameworks */,
 				CB4BBA341F8944790013473D /* libART.a in Frameworks */,
 				CB48CA011F87D3C10087D100 /* libRCTPushNotification.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -522,6 +532,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				CB4C32EB1F89CF8C00DE3FD7 /* RCTCamera.xcodeproj */,
 				CB4BBA0A1F89443D0013473D /* ART.xcodeproj */,
 				CB48C9F71F87D3BB0087D100 /* RCTPushNotification.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -605,6 +616,14 @@
 			children = (
 				CB4BBA101F89443D0013473D /* libART.a */,
 				CB4BBA121F89443D0013473D /* libART-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB4C32EC1F89CF8C00DE3FD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB4C32F71F89CF8C00DE3FD7 /* libRCTCamera.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -750,6 +769,10 @@
 				{
 					ProductGroup = ADBDB9201DFEBF0600ED6528 /* Products */;
 					ProjectRef = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
+				},
+				{
+					ProductGroup = CB4C32EC1F89CF8C00DE3FD7 /* Products */;
+					ProjectRef = CB4C32EB1F89CF8C00DE3FD7 /* RCTCamera.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -1018,6 +1041,13 @@
 			fileType = archive.ar;
 			path = "libART-tvOS.a";
 			remoteRef = CB4BBA111F89443D0013473D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CB4C32F71F89CF8C00DE3FD7 /* libRCTCamera.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTCamera.a;
+			remoteRef = CB4C32F61F89CF8C00DE3FD7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		CB63DCD81F89076100FCE952 /* libthird-party.a */ = {

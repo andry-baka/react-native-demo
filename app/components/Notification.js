@@ -18,7 +18,7 @@ class Notification extends Component {
   componentWillReceiveProps(newProps) {
     const { notificationObject } = newProps;
     this._show(notificationObject);
-    this.timeOutId = setTimeout(this._hide, 10000);
+    this.timeOutId = setTimeout(this._hide, 5000);
   }
 
   _show = (notificationObject) => {
@@ -45,7 +45,7 @@ class Notification extends Component {
 
   _onPress = () => {
     clearTimeout(this.timeOutId);
-    this._hide()
+    this._hide();
   };
 
   render() {
@@ -64,14 +64,14 @@ class Notification extends Component {
             width: width - 40,
             top,
             left: 20,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
             borderRadius: 8
           }}
         >
           <Text
             style={{
               color: '#fff',
-              padding: 8,
+              padding: 12,
               backgroundColor: 'transparent'
             }}
           >

@@ -41,7 +41,7 @@ export default class Profile extends Component {
   _changeToDelay = () => {
     PushNotification.localNotificationSchedule({
       message: `Dear ${this.state.name}, your flight will be delayed 90 minutes. Estimated departure time is ${moment(this.state.scheduledDepartureTime).add(90, 'minutes').format('HH:mm')}`,
-      date: new Date(Date.now())
+      date: new Date(Date.now() + (3 * 1000))
     });
     this.setState({
       flightStatus: 'Delay',
@@ -434,7 +434,7 @@ export default class Profile extends Component {
           width: 1,
           height: 46,
           backgroundColor: '#e7e7e7',
-          marginHorizontal: 10
+          marginHorizontal: 6
         }}
       />
       <View
@@ -472,7 +472,7 @@ export default class Profile extends Component {
           width: 1,
           height: 46,
           backgroundColor: '#e7e7e7',
-          marginHorizontal: 10
+          marginHorizontal: 6
         }}
       />
       <View>
@@ -539,6 +539,13 @@ export default class Profile extends Component {
     );
   };
 
+  _showLPNotificationForBirthday = () => {
+    PushNotification.localNotificationSchedule({
+      message: `Hi ${this.state.name}, Happy Birthday to You! Wish you all the best. Enjoy +100 Points from us!`,
+      date: new Date(Date.now() + (3 * 1000))
+    });
+  };
+
   render() {
     return (
       <View
@@ -590,42 +597,24 @@ export default class Profile extends Component {
             />
           </TouchableOpacity>
         </View>
-        <Image
-          source={Images.logo}
-          style={{
-            marginTop: 20,
-            width: 622 * 0.46875,
-            height: 561 * 0.46875,
-            resizeMode: 'contain'
-          }}
-        />
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => this._showLPNotificationForBirthday()}
+        >
+          <Image
+            source={Images.logo}
+            style={{
+              marginTop: 20,
+              width: 622 * 0.46875,
+              height: 561 * 0.46875,
+              resizeMode: 'contain'
+            }}
+          />
+        </TouchableOpacity>
 
         {this._renderName()}
 
-        <TouchableWithoutFeedback onPress={this._changeToDelay} >
-          <View
-            style={{
-              marginTop: 10,
-              backgroundColor: '#000',
-              width,
-              height: 60,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Text
-              style={{
-                color: '#fff',
-                textAlign: 'center',
-                backgroundColor: 'transparent',
-                fontStyle: 'italic'
-              }}
-            >
-              Don’t forget you will have flight{'\n'}
-              tomorrow evening
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
+        { this._renderSuggestionMessage() }
 
         <TouchableOpacity
           onPress={this._showModal}
