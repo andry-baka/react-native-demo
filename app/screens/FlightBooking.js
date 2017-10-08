@@ -155,7 +155,7 @@ export default class Profile extends Component {
                 fontWeight: '600'
               }}
             >
-              CGK
+              SIN
             </Text>
             <Text
               style={{
@@ -163,7 +163,7 @@ export default class Profile extends Component {
                 color: '#7e7e7e'
               }}
             >
-              Jakarta
+              Singapore
             </Text>
           </View>
           <Image
@@ -181,7 +181,7 @@ export default class Profile extends Component {
                 fontWeight: '600'
               }}
             >
-              SIN
+              FCO
             </Text>
             <Text
               style={{
@@ -189,7 +189,7 @@ export default class Profile extends Component {
                 color: '#7e7e7e'
               }}
             >
-              Singapore
+              Rome
             </Text>
           </View>
         </View>
@@ -283,7 +283,7 @@ export default class Profile extends Component {
           flexDirection: 'row',
           justifyContent: 'space-between',
           paddingHorizontal: 40,
-          marginTop: 10,
+          marginTop: 5,
         }}
       >
         <View>
@@ -292,7 +292,7 @@ export default class Profile extends Component {
               fontSize: 14
             }}
           >
-            <Text style={{fontWeight: 'bold'}}>22:10</Text> 7 Oct
+            <Text style={{fontWeight: 'bold'}}>21:45</Text> 8 Oct
           </Text>
         </View>
         <View>
@@ -301,7 +301,7 @@ export default class Profile extends Component {
               fontSize: 14,
             }}
           >
-            <Text style={{fontWeight: 'bold'}}>00:45</Text> 8 Oct
+            <Text style={{fontWeight: 'bold'}}>00:15</Text> 9 Oct
           </Text>
         </View>
       </View>
@@ -329,16 +329,18 @@ export default class Profile extends Component {
         <Text
           style={{
             fontSize: 18,
+              marginTop: 5,
             fontWeight: '600'
           }}
         >
-          Andry Baka
+          Sia Appchallenge
         </Text>
       </View>
       <View>
         <Text
           style={{
             fontSize: 14,
+              marginTop: 5,
             color: '#7e7e7e'
           }}
         >
@@ -488,7 +490,7 @@ export default class Profile extends Component {
                         color: '#fff'
                       }}
                     >
-                      Business Class
+                      Economy Class
                     </Text>
                     <Text
                       style={{
@@ -505,7 +507,7 @@ export default class Profile extends Component {
                         fontSize: 10
                       }}
                     >
-                      • {'GA-001'} • {'CGK-SIN (21.00 Local Time)'}
+                      • {'SQ-366'} • {'SIN-FCO (21:45 Local Time)'}
                     </Text>
                   </View>
                   <Image
