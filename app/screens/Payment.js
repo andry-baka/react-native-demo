@@ -181,11 +181,11 @@ export default class Payment extends Component {
       {
         delay: 1200,
         toValue: -800,
-        duration: 1800,
+        duration: 1200,
         easing: Easing.easeOut
       }
     ).start();
-    await this._delay(3000);
+    await this._delay(1500);
     const resetAction = NavigationActions.reset({
       index: 1,
       actions: [

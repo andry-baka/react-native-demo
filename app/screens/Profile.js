@@ -93,11 +93,6 @@ export default class Profile extends Component {
   }
 
   componentDidMount() {
-    PushNotification.localNotificationSchedule({
-      message: "My Notification Message",
-      date: new Date(Date.now() + (3 * 1000)) // in 60 secs
-    });
-
     // const req = {
     //   request: {
     //     pnr: "RVA7GY"
