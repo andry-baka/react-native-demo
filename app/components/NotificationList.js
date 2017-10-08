@@ -11,7 +11,9 @@ const NotificationItem = (props) => {
   const { navigate } = props.navigation;
 
   return (
-    <TouchableOpacity onPress={() => { navigate(Routes.NotificationDetailPage) }} >
+    <TouchableOpacity onPress={() => { navigate(Routes.NotificationDetailPage, {
+      notificationItem: notification})
+    }} >
       <View style={{flexDirection: 'row', borderBottomColor: '#eaeaea', borderBottomWidth: 1, padding: 15 , flex: 1}}>
         <View>
           <Image 
@@ -42,22 +44,32 @@ const NotificationItem = (props) => {
 
 const notificationData = [
   {
-    title: '+5 Point SIA Happy birthday you',
+    title: '+50 Point SIA Happy birthday you',
     icon: Images.cake,
     icon2x: Images.cake2x,
-    description: 'Today is your birthday'
+    description: 'Today is your birthday',
+    point: 50,
+    type: 'coin',
+    birthday: true,
+    date: '08 Oct 2017'
   },
   {
     title: '+10 Point from SIA Delay',
     icon: Images.coin,
     icon2x: Images.coin2x,
-    description: 'Sorry delaying ...'
+    description: 'Sorry delaying ...',
+    point: 10,
+    type: 'coin',
+    date: '03 July 2017'
   },
   {
     title: 'Spending on Sakura Changi',
     icon: Images.spending,
     icon2x: Images.spending2x,
-    description: 'Invoice number'
+    description: 'Invoice number',
+    point: 30,
+    type: 'spend',
+    date: '14 Feb 2017'
   }
 ];
 
