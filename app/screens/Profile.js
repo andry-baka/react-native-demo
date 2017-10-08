@@ -52,7 +52,7 @@ export default class Profile extends Component {
       flightStatus: 'Delay',
       historyPoint: 312,
     });
-  }
+  };
 
   _getData = () => {
     const PNRReq = {
@@ -314,7 +314,7 @@ export default class Profile extends Component {
       />
       <View
         style={{
-          marginLeft: 15
+          marginLeft: 14
         }}
       >
         <Text
@@ -386,45 +386,7 @@ export default class Profile extends Component {
           width: 1,
           height: 46,
           backgroundColor: '#e7e7e7',
-          marginHorizontal: 10
-        }}
-      />
-      <View
-        style={{
-          alignItems: 'center'
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 13,
-            color: '#616161'
-          }}
-        >
-          Seat
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: '600'
-          }}
-        >
-        {this.state.seat}
-        </Text>
-        <Text
-          style={{
-            color: '#80ae54',
-            fontSize: 10
-          }}
-        >
-          Gate 5
-        </Text>
-      </View>
-      <View
-        style={{
-          width: 1,
-          height: 46,
-          backgroundColor: '#e7e7e7',
-          marginHorizontal: 10
+          marginHorizontal: 20
         }}
       />
       <View>
@@ -455,7 +417,35 @@ export default class Profile extends Component {
       </View>
     </TouchableOpacity>
     )
-  }
+  };
+
+  _renderSuggestionMessage = () => {
+    return (
+      <TouchableWithoutFeedback onPress={this._changeToDelay} >
+        <View
+          style={{
+            marginTop: 10,
+            backgroundColor: '#000',
+            width,
+            height: 60,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Text
+            style={{
+              color: '#fff',
+              textAlign: 'center',
+              backgroundColor: 'transparent'
+            }}
+          >
+            Don’t forget you will have flight{'\n'}
+            tomorrow evening
+          </Text>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  };
 
   render() {
     return (
@@ -520,29 +510,7 @@ export default class Profile extends Component {
 
         {this._renderName()}
 
-        <TouchableWithoutFeedback onPress={this._changeToDelay} >
-          <View
-            style={{
-              marginTop: 10,
-              backgroundColor: '#000',
-              width,
-              height: 60,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Text
-              style={{
-                color: '#fff',
-                textAlign: 'center',
-                backgroundColor: 'transparent'
-              }}
-            >
-              Don’t forget you will have flight{'\n'}
-              tomorrow evening
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
+        {this.state.isDataFetched && this._renderSuggestionMessage() }
 
         <TouchableOpacity
           onPress={this._showModal}
