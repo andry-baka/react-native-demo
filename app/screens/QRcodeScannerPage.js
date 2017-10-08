@@ -19,8 +19,7 @@ class QRcodeScannerPage extends Component {
   }
 
   onSuccess(e) {
-    console.log(e.data);
-    // this.props.navigation.navigate(Routes.QRcodeScanner, { flightStatus: this.state.flightStatus })
+    this.props.navigation.navigate(Routes.HistoryPoint, { qrcode: info })
   }
 
   render() {
