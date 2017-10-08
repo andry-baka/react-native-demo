@@ -32,7 +32,7 @@ class NotificationList extends Component {
         <View>
           <View style={{
             borderBottomColor: '#eaeaea',
-            borderBottomWidth: 2,
+            borderBottomWidth: 1,
             paddingTop: 20,
             paddingBottom: 20
           }}>
@@ -40,7 +40,7 @@ class NotificationList extends Component {
           </View>
           <View style={{
             borderBottomColor: '#eaeaea',
-            borderBottomWidth: 2,
+            borderBottomWidth: 1,
             paddingTop: 20,
             paddingBottom: 20
           }}>
