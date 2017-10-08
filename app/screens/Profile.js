@@ -360,7 +360,7 @@ export default class Profile extends Component {
       <View
         style={{
           marginLeft: 15,
-            width: 140
+            width: 130
         }}
       >
         <Text

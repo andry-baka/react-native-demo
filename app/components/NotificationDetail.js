@@ -4,11 +4,11 @@ import {
 } from 'react-native';
 import Routes from './../config/Routes';
 import Images from '../assets/Images'
-
+import FlightData from './../data/flightData';
 
 class NotificationList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -36,7 +36,7 @@ class NotificationList extends Component {
             paddingTop: 20,
             paddingBottom: 20
           }}>
-            <Text style={{color: '#878787', fontWeight: '600', textAlign: 'center',}}>Hi Andry Baka, This is notification for you !</Text>
+            <Text style={{color: '#878787', fontWeight: '600', textAlign: 'center',}}>Hi {FlightData.name}, This is notification for you !</Text>
           </View>
           <View style={{
             borderBottomColor: '#eaeaea',
@@ -44,12 +44,13 @@ class NotificationList extends Component {
             paddingTop: 20,
             paddingBottom: 20
           }}>
-            <Text style={{color: '#231f20', fontWeight: 'bold', textAlign: 'center', fontStyle: 'italic', fontSize: 17, marginBottom: 5}}>Spending on Sakura Restaurant</Text>
-            <Text style={{color: '#878787', fontWeight: '400', textAlign: 'center'}}>10 Oct 2017</Text>
+            <Text style={{color: '#231f20', fontWeight: 'bold', textAlign: 'center', fontStyle: 'italic', fontSize: 17, marginBottom: 5}}>{notificationItem.description}</Text>
+            <Text style={{color: '#878787', fontWeight: '400', textAlign: 'center'}}>{notificationItem.date}</Text>
           </View>
           <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 30}}>
-              <Text style={{color: '#231f20', fontWeight: 'bold', fontSize: 17}}>Point Deducted: </Text>
-              <Text style={{color: '#000', fontWeight: 'bold', fontSize: 20}}>30</Text>
+              {notificationItem.type === 'coin' && <Text style={{color: '#231f20', fontWeight: 'bold', fontSize: 17, marginTop: -10}}>Point added: </Text>}
+              {notificationItem.type === 'spend' && <Text style={{color: '#231f20', fontWeight: 'bold', fontSize: 17, marginTop: -10}}>Point deducted: </Text>}
+              <Text style={{color: '#000', fontWeight: 'bold', fontSize: 20}}>{notificationItem.point}</Text>
           </View>
           <Text style={{color: '#878787', fontStyle: 'italic', marginBottom: 10}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</Text>
         </View>

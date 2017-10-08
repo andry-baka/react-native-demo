@@ -72,11 +72,14 @@ class NotificationDetailPage extends Component {
             />
           </View>
         </View>
-        <NotificationDetailComponent />
-        <Confetti
-          ref={(node) => this._confettiView = node}
-          confettiCount={300}
-        />
+        <NotificationDetailComponent notificationItem={this.props.navigation.state.params.notificationItem}/>
+        {
+          this.props.navigation.state.params.notificationItem.birthday &&
+          <Confetti
+            ref={(node) => this._confettiView = node}
+            confettiCount={300}
+          />
+        }
       </View>
     );
   }

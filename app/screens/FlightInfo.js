@@ -21,7 +21,7 @@ export default class Profile extends Component {
       destAirportCode,
       flightNumber,
       flightTime
-    } = this.props.navigation.state.params.state;
+    } = FlightData;
     return (
       <View
         style={{
