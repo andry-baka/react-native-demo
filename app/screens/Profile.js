@@ -423,7 +423,7 @@ export default class Profile extends Component {
           width: 1,
           height: 46,
           backgroundColor: '#e7e7e7',
-          marginHorizontal: 10
+          marginHorizontal: 6
         }}
       />
       <View
@@ -461,7 +461,7 @@ export default class Profile extends Component {
           width: 1,
           height: 46,
           backgroundColor: '#e7e7e7',
-          marginHorizontal: 10
+          marginHorizontal: 6
         }}
       />
       <View>
