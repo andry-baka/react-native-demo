@@ -207,9 +207,9 @@ export default class Profile extends Component {
                   borderColor: '#eaeaea',
                   borderWidth: 1,
                   borderRadius: 8,
-                    fontSize: 13,
-                    textAlign: 'right',
-                    paddingRight: 10
+                  fontSize: 13,
+                  textAlign: 'right',
+                  paddingRight: 10
                 }}
                 value="APPCHALLENGE"
                 placeholder="APPCHALLENGE"
@@ -229,14 +229,15 @@ export default class Profile extends Component {
 
             <TextInput
               style={{
-                height: 80,
+                height: 40,
                 marginTop: 10,
                 borderColor: '#eaeaea',
                 borderWidth: 1,
                 borderRadius: 8,
-                  fontSize: 13,
-                  padding: 10,
+                fontSize: 13,
+                padding: 10,
               }}
+              value="RVA76Y"
               placeholder="Enter booking ref number"
               multiline = {true}
               numberOfLines = {3}
