@@ -80,12 +80,19 @@ class HistoryPoint extends Component {
       >
         Your Points
       </Text>
-      <View
-        style={{
-          width: 20,
-          height: 20
-        }}
-      />
+      <TouchableOpacity
+      onPress={() => {
+        this.props.navigation.navigate(Routes.QRcodeScanner, { flightStatus: this.state.flightStatus })
+      }}
+      >
+        <Image
+          source={Images.qrCode}
+          style={{
+            width: 42,
+            height: 42
+          }}
+        />
+      </TouchableOpacity>
     </View>
     )
   } 
