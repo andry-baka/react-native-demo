@@ -38,6 +38,13 @@ const HistoryItem = (props) => {
 
 const historyData = [
   {
+    status: 'pending',
+    type: 'spend',
+    point: 10,
+    title: 'Spending on Sakura Restaurant',
+    description: '08 Oct: Invoice number 09283'
+  },
+  {
     status: 'done',
     type: 'coin',
     point: 10,
@@ -47,23 +54,9 @@ const historyData = [
   {
     status: 'pending',
     type: 'spend',
-    point: 30,
-    title: 'Spending on Sakura Restaurant',
-    description: '08 Oct: Invoice number 09283'
-  },
-  {
-    status: 'pending',
-    type: 'spend',
     point: 10,
     title: 'Spending on Sakura Restaurant',
-    description: '08 Oct: Invoice number 09283'
-  },
-  {
-    status: 'done',
-    type: 'coin',
-    point: 50,
-    title: 'Flying with Singapore Airlines   ',
-    description: '21 Jun: SQ-35 CGK to SIN'
+    description: '02 Jun: Invoice number 09283'
   },
   {
     status: 'done',
@@ -71,20 +64,6 @@ const historyData = [
     point: 10,
     title: 'Flying with Singapore Airlines   ',
     description: '4 Mar: SQ-35 CGK to SF'
-  },
-  {
-    status: 'pending',
-    type: 'spend',
-    point: 30,
-    title: 'Spending on Sakura Restaurant',
-    description: '08 Oct: Invoice number 09283'
-  },
-  {
-    status: 'pending',
-    type: 'spend',
-    point: 10,
-    title: 'Spending on Sakura Restaurant',
-    description: '08 Oct: Invoice number 09283'
   },
   {
     status: 'done',
