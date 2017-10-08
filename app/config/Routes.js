@@ -7,5 +7,6 @@ export default Routes = {
   HistoryPoint: 'history-point',
   NotificationPage: 'notification-page',
   Payment: 'payment',
-  NotificationDetailPage: 'notification-detail-page'
+  NotificationDetailPage: 'notification-detail-page',
+  QRcodeScanner: 'qr-code-scanner-page'
 };

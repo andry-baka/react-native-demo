@@ -12,6 +12,7 @@ import HistoryPoint from './screens/HistoryPoint';
 import NotificationPage from './screens/NotificationPage';
 import Payment from './screens/Payment';
 import NotificationDetailPage from './screens/NotificationDetailPage'
+import QRcodeScanner from './screens/QRcodeScannerPage';
 
 // components
 import Notification from './components/Notification';
@@ -30,7 +31,8 @@ const MainStackNavigator = StackNavigator({
   [Routes.Reward]: { screen: Reward },
   [Routes.FlightInfo]: { screen: FlightInfo },
   [Routes.FlightBooking]: { screen: FlightBooking },
-  [Routes.Payment]: { screen: Payment }
+  [Routes.Payment]: { screen: Payment },
+  [Routes.QRcodeScanner]: { screen: QRcodeScanner }
 }, {
   headerMode: 'none',
   cardStyle: { backgroundColor: 'white' },
