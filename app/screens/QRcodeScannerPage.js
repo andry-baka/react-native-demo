@@ -19,7 +19,7 @@ class QRcodeScannerPage extends Component {
   }
 
   onSuccess(e) {
-    this.props.navigation.navigate(Routes.HistoryPoint, { qrcode: info })
+    this.props.navigation.navigate(Routes.HistoryPoint, { qrcode: e.data })
   }
 
   render() {
