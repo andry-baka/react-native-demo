@@ -306,7 +306,7 @@ export default class Payment extends Component {
         }}
       >
         { this._renderHeader() }
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{flex: 1, marginTop: -150, alignItems: 'center', justifyContent: 'center'}}>
           <View style={{ width: 100, height: 100 }}>
             <AnimatedCircularProgress
               ref='circularProgress'
@@ -348,8 +348,8 @@ export default class Payment extends Component {
             style={{
               position: 'absolute',
               width,
-              height: 100,
-              top: height - 100
+              height: 500,
+              top: height - 500,
             }}
             activeOpacity={0}
             onPress={() => {
