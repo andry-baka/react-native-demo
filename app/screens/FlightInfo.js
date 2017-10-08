@@ -104,7 +104,8 @@ export default class Profile extends Component {
             source={Images._smallPlane_}
             style={{
               width: 113,
-              height: 24
+              height: 24,
+
             }}
           />
           <View
@@ -382,14 +383,15 @@ export default class Profile extends Component {
             style={{
               marginLeft: 40,
               marginTop: 20,
-              fontSize: 18
+              fontSize: 16,
+                fontWeight: 'bold'
             }}
           >
             Boarding Pass
           </Text>
           <View
             style={{
-              marginTop: 12,
+              marginTop: 8,
               marginLeft: 20,
               width: width - 110,
               height: 0.8,
@@ -408,15 +410,17 @@ export default class Profile extends Component {
             <View>
               <Text
                 style={{
-                  color: '#a2a4a5'
+                  color: '#a2a4a5',
+                    fontSize: 13
                 }}
               >
                 Passenger
               </Text>
               <Text
                 style={{
-                  fontSize: 20,
-                  fontWeight: '500'
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    marginTop: 5
                 }}
               >
                 APPCHALLENGE
@@ -424,15 +428,16 @@ export default class Profile extends Component {
               <Text
                 style={{
                   color: '#a2a4a5',
-                  marginTop: 14
+                  marginTop: 13
                 }}
               >
                 Seat Class
               </Text>
               <Text
                 style={{
-                  fontSize: 20,
-                  fontWeight: '500'
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    marginTop: 5
                 }}
               >
                 {flightClass}

@@ -284,7 +284,7 @@ export default class Profile extends Component {
           flexDirection: 'row',
           justifyContent: 'space-between',
           paddingHorizontal: 40,
-          marginTop: 10,
+          marginTop: 5,
         }}
       >
         <View>
@@ -330,6 +330,7 @@ export default class Profile extends Component {
         <Text
           style={{
             fontSize: 18,
+              marginTop: 5,
             fontWeight: '600'
           }}
         >
@@ -340,6 +341,7 @@ export default class Profile extends Component {
         <Text
           style={{
             fontSize: 14,
+              marginTop: 5,
             color: '#7e7e7e'
           }}
         >
@@ -493,7 +495,7 @@ export default class Profile extends Component {
                         color: '#fff'
                       }}
                     >
-                      Business Class
+                      Economy Class
                     </Text>
                     <Text
                       style={{

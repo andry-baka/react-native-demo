@@ -30,7 +30,7 @@ const PartnerItem = (props) => {
           top: width/2 - 40,
           justifyContent: 'center'
         }}>
-        <Text style={{fontSize: 14, fontWeight: 'bold', color: '#fff', paddingHorizontal: 30, fontStyle: 'italic'}}>{partner.name}</Text>
+        <Text style={{fontSize: 14, fontWeight: 'bold', color: '#fff', paddingHorizontal: 10, fontStyle: 'italic'}}>{partner.name}</Text>
       </View>
     </View>
   )
@@ -43,15 +43,15 @@ class PartnerList extends Component {
     this.state = {
       dataSource: ds.cloneWithRows([
         {
-          name: 'Sushi Tea',
+          name: 'Sushi Hiro',
           partnerPhoto: ImageStatic.partner[1].img
         },
         {
-          name: 'Sushi Tea',
+          name: 'King Mango Thai',
           partnerPhoto: ImageStatic.partner[2].img
         },
         {
-          name: 'Sushi Tea',
+          name: 'Eatlah',
           partnerPhoto: ImageStatic.partner[3].img
         },
         {
@@ -59,9 +59,13 @@ class PartnerList extends Component {
           partnerPhoto: ImageStatic.partner[4].img
         },
         {
-          name: 'Sushi Tea',
+          name: 'Kintan Buffet',
           partnerPhoto: ImageStatic.partner[0].img
-        }
+        },
+          {
+              name: 'Sushi Hiro',
+              partnerPhoto: ImageStatic.partner[1].img
+          }
       ]),
     };
   }

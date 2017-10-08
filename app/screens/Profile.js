@@ -204,7 +204,7 @@ export default class Profile extends Component {
         >
           <Text
             style={{
-              color: 'black',
+              color: '#231f20',
               textAlign: 'center',
               fontSize: 25,
               fontWeight: '700'
@@ -214,7 +214,7 @@ export default class Profile extends Component {
           </Text>
 
           <View style={{
-              marginTop: 20,
+              marginTop: 0,
               margin: -20
             }}
           >
@@ -225,26 +225,30 @@ export default class Profile extends Component {
                 backgroundColor: '#fff',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                flexDirection: 'row'
+                flexDirection: 'row',
               }}
             >
               <Text
                 style={{
-                  color: 'black',
+                  color: '#231f20',
+                  fontWeight: 'bold',
                   fontSize: 15
                 }}
               >
-                Last Name
+                Last Name :
               </Text>
               <TextInput
                 style={{
-                  height: 40,
+                  height: 35,
                   width: 150,
                   alignItems: 'flex-end',
                   justifyContent: 'flex-end',
                   borderColor: '#eaeaea',
                   borderWidth: 1,
-                  borderRadius: 8
+                  borderRadius: 8,
+                    fontSize: 13,
+                    textAlign: 'right',
+                    paddingRight: 10
                 }}
                 value="APPCHALLENGE"
                 placeholder="APPCHALLENGE"
@@ -254,11 +258,12 @@ export default class Profile extends Component {
 
             <Text
               style={{
-                color: 'black',
+                color: '#231f20',
+                  fontWeight: 'bold',
                 fontSize: 15
               }}
             >
-              Booking ref
+              Booking Ref :
             </Text>
 
             <TextInput
@@ -267,7 +272,9 @@ export default class Profile extends Component {
                 marginTop: 10,
                 borderColor: '#eaeaea',
                 borderWidth: 1,
-                borderRadius: 8
+                borderRadius: 8,
+                  fontSize: 13,
+                  padding: 10,
               }}
               placeholder="Enter booking ref number"
               multiline = {true}
@@ -283,9 +290,9 @@ export default class Profile extends Component {
                 alignItems: 'center',
                 marginTop: 16,
                 borderRadius: 8,
-                backgroundColor: '#80ae54',
+                backgroundColor: '#689142',
                 paddingHorizontal: 34,
-                paddingVertical: 12
+                paddingVertical: 8
               }}
             >
               <Image source={Images.add} style={{width: 25, height: 25}} />
@@ -347,11 +354,13 @@ export default class Profile extends Component {
         style={{
           width: 55 * 0.46875,
           height: 73 * 0.46875,
+            marginLeft:20
         }}
       />
       <View
         style={{
-          marginLeft: 14
+          marginLeft: 15,
+            width: 140
         }}
       >
         <Text
@@ -361,7 +370,7 @@ export default class Profile extends Component {
             fontWeight: '500'
           }}
         >
-          {this.state.flightClass} Class {this.state.flightNumber}
+          {this.state.flightClass} CLASS
         </Text>
         <View
           style={{
@@ -381,7 +390,9 @@ export default class Profile extends Component {
             source={Images.smallPlane}
             style={{
               width: 14,
-              height: 14
+              height: 14,
+                marginLeft:5,
+                marginRight:5
             }}
           />
           <Text
@@ -414,7 +425,7 @@ export default class Profile extends Component {
               marginLeft: 4,
             }}
           >
-            Check-in
+              {this.state.flightNumber}
           </Text>
         </View>
       </View>
@@ -591,7 +602,30 @@ export default class Profile extends Component {
 
         {this._renderName()}
 
-        { this._renderSuggestionMessage() }
+        <TouchableWithoutFeedback onPress={this._changeToDelay} >
+          <View
+            style={{
+              marginTop: 10,
+              backgroundColor: '#000',
+              width,
+              height: 60,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Text
+              style={{
+                color: '#fff',
+                textAlign: 'center',
+                backgroundColor: 'transparent',
+                fontStyle: 'italic'
+              }}
+            >
+              Don’t forget you will have flight{'\n'}
+              tomorrow evening
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
 
         <TouchableOpacity
           onPress={this._showModal}
