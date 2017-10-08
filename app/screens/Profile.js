@@ -154,7 +154,7 @@ export default class Profile extends Component {
         onBackdropPress={() => this.setState({ visibleModal: null })}
       >
         <View style={{
-          marginTop: 20,
+          marginTop: -150,
           backgroundColor: 'white',
           height: 350,
           justifyContent: 'center',
