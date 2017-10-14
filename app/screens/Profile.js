@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import { connect } from 'react-redux';
 import {
   View, Text, Button, Image, StatusBar, Dimensions,
   TextInput, Animated,
@@ -16,10 +17,12 @@ import Networking from './../api/Networking';
 
 import FlightData from './../data/flightData';
 
+import { counterActionCreators } from './../reducers';
+
 const { width, height } = Dimensions.get('window');
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
-export default class Profile extends Component {
+class ProfileComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -286,6 +289,7 @@ export default class Profile extends Component {
           }}
         >
           {this.state.name}
+          {this.props.counter}
         </Text>
       </View>
     )
@@ -596,6 +600,38 @@ export default class Profile extends Component {
           <Text style={{ marginLeft: 8, color: '#fff', fontWeight: '600' }}>Add New Flight</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity
+          onPress={() => this.props.Increase()}
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginTop: 16,
+            borderRadius: 8,
+            backgroundColor: '#6d6353',
+            paddingHorizontal: 34,
+            paddingVertical: 12
+          }}
+        >
+          <Image source={Images.add} style={{width: 25, height: 25}} />
+          <Text style={{ marginLeft: 8, color: '#fff', fontWeight: '600' }}>Increase counter</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => this.props.Decrease()}
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginTop: 16,
+            borderRadius: 8,
+            backgroundColor: '#6d6353',
+            paddingHorizontal: 34,
+            paddingVertical: 12
+          }}
+        >
+          <Image source={Images.add} style={{width: 25, height: 25}} />
+          <Text style={{ marginLeft: 8, color: '#fff', fontWeight: '600' }}>Decrease counter</Text>
+        </TouchableOpacity>
+
         {this._renderModal()}
 
         { this.state.isDataFetched && this._renderStat() }
@@ -604,3 +640,21 @@ export default class Profile extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    counter: state.counterReducer.count
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    Increase : () => dispatch({
+      type : 'IncreaseCounter'
+    }),
+    Decrease : () => dispatch({
+      type : 'DecreaseCounter'
+    })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileComponent);

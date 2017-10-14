@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { View } from 'react-native';
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 // screens
 import Profile from './screens/Profile';
@@ -21,7 +22,8 @@ import PushNotificationUtils from './utils/PushNotificationUtils';
 import reducers from './reducers';
 import { StackNavigator } from 'react-navigation';
 import Routes from './config/Routes';
-const store = createStore(reducers);
+
+const store = createStore(reducers, composeWithDevTools());
 
 const MainStackNavigator = StackNavigator({
   [Routes.NotificationDetailPage]: { screen: NotificationDetailPage },
